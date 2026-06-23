@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sake Nikhitha · Aspiring ML Engineer & Full-Stack Developer</title>
+    <meta name="description" content="Sake Nikhitha — Aspiring Machine Learning Engineer & Full-Stack Developer. 4 deployed applications, open-source contributor." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:opsz,wght@14..32,300..700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <!-- ====== CURSOR SPOTLIGHT ====== -->
+    <div class="cursor-spotlight" id="cursorSpotlight"></div>
+
+    <!-- ====== LOADING SCREEN ====== -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <span class="loader-name">Sake Nikhitha</span>
+            <div class="loader-bar"><div class="loader-progress" id="loaderProgress"></div></div>
+        </div>
+    </div>
+
+    <!-- ====== NAV ====== -->
+    <nav class="site-nav" id="siteNav">
+        <div class="nav-inner">
+            <div class="nav-brand">
+                <span class="nav-logo">SN</span>
+                <span class="nav-name">Sake Nikhitha</span>
+            </div>
+            <div class="nav-clock" id="navClock">IST · 00:00:00</div>
+            <ul class="nav-links">
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
+                <li><a href="#certifications" class="nav-link">Certifications</a></li>
+                <li><a href="#contact" class="nav-link nav-cta">Get in Touch</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ====== HERO ====== -->
+    <header class="hero" id="hero">
+        <div class="hero-grid">
+            <div class="hero-text">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    Open to Opportunities
+                </div>
+                <h1 class="hero-title">
+                    <span class="title-line">Sake</span>
+                    <span class="title-line accent">Nikhitha</span>
+                </h1>
+                <div class="hero-subtitle">
+                    <span>Aspiring Machine Learning Engineer</span>
+                    <span class="separator">·</span>
+                    <span>Full-Stack Developer</span>
+                </div>
+                <p class="hero-summary">
+                    Building AI-powered applications with purpose. 
+                    <span class="highlight">4 deployed apps</span> · 
+                    Open-source contributor with <span class="highlight">100+ commits</span> · 
+                    <span class="highlight">Python</span> · <span class="highlight">React</span> · <span class="highlight">FastAPI</span>
+                </p>
+                <div class="hero-cta">
+                    <a href="#projects" class="btn-primary">
+                        <span>View My Work</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                    <a href="#contact" class="btn-secondary">Contact Me</a>
+                    <a id="heroDownloadBtn" href="Sake Nikhitha.pdf" download class="btn-download">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        <span>Download CV</span>
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat"><span class="stat-number">4</span><span class="stat-label">Deployed Apps</span></div>
+                    <div class="stat"><span class="stat-number">100+</span><span class="stat-label">Commits</span></div>
+                    <div class="stat"><span class="stat-number">90%+</span><span class="stat-label">Model Accuracy</span></div>
+                    <div class="stat"><span class="stat-number">10+</span><span class="stat-label">Repositories</span></div>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="portrait-wrapper">
+                    <div class="portrait-frame">
+                        <img
+                        src="https://i.ibb.co/ccVqyYqr/My-professional-photo.jpg"
+                        alt="Sake Nikhitha - Professional Portrait"
+                        class="portrait-img"
+                        />
+                        <div class="portrait-overlay">
+                            <div class="portrait-glow"></div>
+                        </div>
+                    </div>
+                    <div class="portrait-tagline">
+                        <span>ML Engineer · Full-Stack</span>
+                        <span class="tagline-year">2026</span>
+                    </div>
+                </div>
+                <div class="floating-badge badge-1">
+                    <span class="badge-icon">🤖</span>
+                    <span>RAG Pipeline</span>
+                </div>
+                <div class="floating-badge badge-2">
+                    <span class="badge-icon">🧠</span>
+                    <span>Computer Vision</span>
+                </div>
+                <div class="floating-badge badge-3">
+                    <span class="badge-icon">⚡</span>
+                    <span>FastAPI</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- MARQUEE -->
+        <div class="marquee-wrap">
+            <div class="marquee-track" id="marqueeTrack">
+                <span>Full-Stack Development</span>
+                <span>·</span>
+                <span>FastAPI</span>
+                <span>·</span>
+                <span>React.js</span>
+                <span>·</span>
+                <span>TensorFlow</span>
+                <span>·</span>
+                <span>Hugging Face</span>
+                <span>·</span>
+                <span>MongoDB</span>
+                <span>·</span>
+                <span>Scikit-learn</span>
+                <span>·</span>
+                <span>Computer Vision</span>
+                <span>·</span>
+                <span>NLP</span>
+                <span>·</span>
+                <span>LLAMA 3.1</span>
+                <span>·</span>
+                <span>Node.js</span>
+                <span>·</span>
+                <span>Flask</span>
+                <span>·</span>
+                <span>MySQL</span>
+                <span>·</span>
+                <!-- Duplicate for seamless loop -->
+                <span>Full-Stack Development</span>
+                <span>·</span>
+                <span>FastAPI</span>
+                <span>·</span>
+                <span>React.js</span>
+                <span>·</span>
+                <span>TensorFlow</span>
+                <span>·</span>
+                <span>Hugging Face</span>
+                <span>·</span>
+                <span>MongoDB</span>
+                <span>·</span>
+                <span>Scikit-learn</span>
+                <span>·</span>
+                <span>Computer Vision</span>
+                <span>·</span>
+                <span>NLP</span>
+                <span>·</span>
+                <span>LLAMA 3.1</span>
+                <span>·</span>
+                <span>Node.js</span>
+                <span>·</span>
+                <span>Flask</span>
+                <span>·</span>
+                <span>MySQL</span>
+                <span>·</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- ====== SKILLS ====== -->
+    <section class="skills-section" id="skills">
+        <div class="container">
+            <div class="skills-header">
+                <span class="section-tag">Expertise</span>
+                <h2 class="section-title">Technical Arsenal</h2>
+                <p class="skills-subtitle">Full-Stack · AI/ML · Cloud</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-card highlight-fullstack">
+                    <div class="skill-icon">⌨️</div>
+                    <h3>Languages</h3>
+                    <p>Python · Java · JavaScript</p>
+                    <span class="skill-badge">Full-Stack</span>
+                </div>
+                <div class="skill-card highlight-fullstack">
+                    <div class="skill-icon">🎨</div>
+                    <h3>Frontend</h3>
+                    <p>React.js · Tailwind · Bootstrap · HTML · CSS</p>
+                    <span class="skill-badge">Full-Stack</span>
+                </div>
+                <div class="skill-card highlight-fullstack">
+                    <div class="skill-icon">⚙️</div>
+                    <h3>Backend &amp; DB</h3>
+                    <p>FastAPI · Flask · Node.js · MongoDB · MySQL</p>
+                    <span class="skill-badge">Full-Stack</span>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🧪</div>
+                    <h3>AI / ML</h3>
+                    <p>Scikit-learn · TensorFlow · Hugging Face · RAG · NLP</p>
+                    <span class="skill-badge">AI/ML</span>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">☁️</div>
+                    <h3>Tools &amp; Cloud</h3>
+                    <p>GitHub · Vercel · Render · VS Code · Docker</p>
+                    <span class="skill-badge">DevOps</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== EXPERIENCE ====== -->
+    <section class="experience-section" id="experience">
+        <div class="container">
+            <div class="exp-header">
+                <span class="section-tag light">Career</span>
+                <h2 class="section-title light">Professional Experience</h2>
+            </div>
+            <div class="timeline">
+
+                <div class="timeline-card">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-top">
+                            <span class="timeline-date">Jun 2026 – Jul 2026</span>
+                            <span class="timeline-company">InternPe</span>
+                        </div>
+                        <h3>Machine Learning Intern</h3>
+                        <p class="timeline-location">Remote</p>
+                        <ul>
+                            <li>Developed <strong>4 production-grade ML solutions</strong>: IPL Predictor, Diabetes Prediction, Car Price Regression, and Breast Cancer Classifier</li>
+                            <li>Improved model accuracy by <strong>20%</strong> through Exploratory Data Analysis and feature engineering on <strong>500,000+</strong> data records</li>
+                            <li>Achieved <strong>over 90% accuracy</strong> across all 4 models, demonstrating robust predictive capabilities</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-card">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-top">
+                            <span class="timeline-date">Jun 2026 – Aug 2026</span>
+                            <span class="timeline-company">Infosys Springboard</span>
+                        </div>
+                        <h3>AI &amp; ML Intern</h3>
+                        <p class="timeline-location">Virtual</p>
+                        <ul>
+                            <li>Engineered <strong>12+ custom Computer Vision and NLP model architectures</strong> using Python, Scikit-learn, and Hugging Face pipelines</li>
+                            <li>Completed all <strong>5 primary structured training tracks</strong> ahead of schedule, earning Certificate of Achievement</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== PROJECTS ====== -->
+    <section class="projects-section" id="projects">
+        <div class="container">
+            <div class="projects-header">
+                <span class="section-tag">Portfolio</span>
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="projects-subtitle">Building solutions that solve real-world problems</p>
+            </div>
+        </div>
+
+        <div class="projects-grid">
+            <!-- CodeQuest -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop" alt="CodeQuest" />
+                    <div class="project-image-overlay"></div>
+                    <span class="project-status-badge">Live</span>
+                </div>
+                <div class="project-card-content">
+                    <h3 class="project-name">CodeQuest</h3>
+                    <div class="project-problem">
+                        <span class="problem-label">Problem Solved:</span>
+                        <p>Lack of an engaging platform for developers to practice DSA problems with real-time feedback and progression tracking.</p>
+                    </div>
+                    <div class="project-impact">
+                        <span class="impact-label">Impact:</span>
+                        <p>Helped 500+ developers improve their coding skills through interactive contests and structured learning paths.</p>
+                    </div>
+                    <div class="project-stack">
+                        <span>React 18</span>
+                        <span>Node.js</span>
+                        <span>MongoDB</span>
+                        <span>JWT</span>
+                        <span>Tailwind</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/fabpot-glitch/CodeQuest" target="_blank" class="btn-github">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.15 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.62.24 2.85.12 3.15.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                            View Repository
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MindGuard AI -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=400&fit=crop" alt="MindGuard AI" />
+                    <div class="project-image-overlay"></div>
+                    <span class="project-status-badge">Live</span>
+                </div>
+                <div class="project-card-content">
+                    <h3 class="project-name">MindGuard AI</h3>
+                    <div class="project-problem">
+                        <span class="problem-label">Problem Solved:</span>
+                        <p>Remote workers and students struggle with maintaining focus and detecting early signs of mental fatigue.</p>
+                    </div>
+                    <div class="project-impact">
+                        <span class="impact-label">Impact:</span>
+                        <p>Provides real-time cognitive load monitoring, helping users maintain productivity and prevent burnout.</p>
+                    </div>
+                    <div class="project-stack">
+                        <span>React.js</span>
+                        <span>FastAPI</span>
+                        <span>Hugging Face</span>
+                        <span>Computer Vision</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/fabpot-glitch/Mindguard--AI-" target="_blank" class="btn-github">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.15 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.62.24 2.85.12 3.15.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                            View Repository
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DocuMind AI -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=600&h=400&fit=crop" alt="DocuMind AI" />
+                    <div class="project-image-overlay"></div>
+                    <span class="project-status-badge">Live</span>
+                </div>
+                <div class="project-card-content">
+                    <h3 class="project-name">DocuMind AI</h3>
+                    <div class="project-problem">
+                        <span class="problem-label">Problem Solved:</span>
+                        <p>Reviewing lengthy PDF documents for specific information is time-consuming and inefficient for researchers and professionals.</p>
+                    </div>
+                    <div class="project-impact">
+                        <span class="impact-label">Impact:</span>
+                        <p>Reduces document analysis time by 80% through intelligent Q&A and semantic search capabilities.</p>
+                    </div>
+                    <div class="project-stack">
+                        <span>FastAPI</span>
+                        <span>LLAMA 3.1</span>
+                        <span>Hugging Face</span>
+                        <span>RAG</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/fabpot-glitch/Rag-chatbot" target="_blank" class="btn-github">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.15 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.62.24 2.85.12 3.15.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                            View Repository
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- IPL Predictor -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=600&h=400&fit=crop" alt="IPL Predictor" />
+                    <div class="project-image-overlay"></div>
+                    <span class="project-status-badge production">Production</span>
+                </div>
+                <div class="project-card-content">
+                    <h3 class="project-name">IPL Predictor</h3>
+                    <div class="project-problem">
+                        <span class="problem-label">Problem Solved:</span>
+                        <p>Cricket fans and analysts lack data-driven insights to predict match outcomes with confidence.</p>
+                    </div>
+                    <div class="project-impact">
+                        <span class="impact-label">Impact:</span>
+                        <p>Empowers users with 90%+ accurate predictions, enhancing match viewing experience and analytical decision-making.</p>
+                    </div>
+                    <div class="project-stack">
+                        <span>Python</span>
+                        <span>Scikit-learn</span>
+                        <span>Pandas</span>
+                        <span>NumPy</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/fabpot-glitch" target="_blank" class="btn-github">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.15 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.62.24 2.85.12 3.15.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                            View Repository
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Email Spam Detector -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1596524430615-b46475ddb6fe?w=600&h=400&fit=crop" alt="Email Spam Detector" />
+                    <div class="project-image-overlay"></div>
+                    <span class="project-status-badge production">Production</span>
+                </div>
+                <div class="project-card-content">
+                    <h3 class="project-name">Email Spam Detector</h3>
+                    <div class="project-problem">
+                        <span class="problem-label">Problem Solved:</span>
+                        <p>Email users waste time filtering through spam messages, risking security threats from malicious emails.</p>
+                    </div>
+                    <div class="project-impact">
+                        <span class="impact-label">Impact:</span>
+                        <p>Protects users with 95%+ accurate spam detection, saving time and reducing security risks.</p>
+                    </div>
+                    <div class="project-stack">
+                        <span>Python</span>
+                        <span>Flask</span>
+                        <span>Scikit-learn</span>
+                        <span>NLTK</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/fabpot-glitch/Email_spam_detector-" target="_blank" class="btn-github">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.15 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.62.24 2.85.12 3.15.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                            View Repository
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Diabetes Prediction System -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=600&h=400&fit=crop" alt="Diabetes Prediction" />
+                    <div class="project-image-overlay"></div>
+                    <span class="project-status-badge production">Production</span>
+                </div>
+                <div class="project-card-content">
+                    <h3 class="project-name">Diabetes Prediction System</h3>
+                    <div class="project-problem">
+                        <span class="problem-label">Problem Solved:</span>
+                        <p>Early diabetes detection is challenging without accessible screening tools for patients and healthcare providers.</p>
+                    </div>
+                    <div class="project-impact">
+                        <span class="impact-label">Impact:</span>
+                        <p>Enables early intervention through accurate prediction, improving patient outcomes and reducing healthcare costs.</p>
+                    </div>
+                    <div class="project-stack">
+                        <span>Python</span>
+                        <span>Scikit-learn</span>
+                        <span>Flask</span>
+                        <span>Pandas</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/fabpot-glitch/Diabetes-Prediction-System" target="_blank" class="btn-github">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.15 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.62.24 2.85.12 3.15.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                            View Repository
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Car Price Prediction -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1552519507-88aa2dfa9fdb?w=600&h=400&fit=crop" alt="Car Price Prediction" />
+                    <div class="project-image-overlay"></div>
+                    <span class="project-status-badge production">Production</span>
+                </div>
+                <div class="project-card-content">
+                    <h3 class="project-name">Car Price Prediction</h3>
+                    <div class="project-problem">
+                        <span class="problem-label">Problem Solved:</span>
+                        <p>Used car buyers and sellers struggle with determining fair market value without reliable pricing tools.</p>
+                    </div>
+                    <div class="project-impact">
+                        <span class="impact-label">Impact:</span>
+                        <p>Empowers users with 90%+ accurate price predictions, facilitating fair transactions and informed decisions.</p>
+                    </div>
+                    <div class="project-stack">
+                        <span>Python</span>
+                        <span>Scikit-learn</span>
+                        <span>Pandas</span>
+                        <span>NumPy</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/fabpot-glitch/Car-price-prediction" target="_blank" class="btn-github">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.15 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.62.24 2.85.12 3.15.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                            View Repository
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI-Assisted Journal System -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1517842645767-c639042777db?w=600&h=400&fit=crop" alt="AI Journal" />
+                    <div class="project-image-overlay"></div>
+                    <span class="project-status-badge">Live</span>
+                </div>
+                <div class="project-card-content">
+                    <h3 class="project-name">AI-Assisted Journal System</h3>
+                    <div class="project-problem">
+                        <span class="problem-label">Problem Solved:</span>
+                        <p>Journaling lacks intelligent assistance to help users reflect, analyze, and gain insights from their entries.</p>
+                    </div>
+                    <div class="project-impact">
+                        <span class="impact-label">Impact:</span>
+                        <p>Enhances self-reflection through AI-powered writing assistance and sentiment analysis for personal growth.</p>
+                    </div>
+                    <div class="project-stack">
+                        <span>JavaScript</span>
+                        <span>React.js</span>
+                        <span>Node.js</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/fabpot-glitch/ai-assisted-journal-system" target="_blank" class="btn-github">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.15 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.62.24 2.85.12 3.15.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                            View Repository
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- React Components Collection -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?w=600&h=400&fit=crop" alt="React Components" />
+                    <div class="project-image-overlay"></div>
+                    <span class="project-status-badge">Live</span>
+                </div>
+                <div class="project-card-content">
+                    <h3 class="project-name">React Components</h3>
+                    <div class="project-problem">
+                        <span class="problem-label">Problem Solved:</span>
+                        <p>Developers waste time rebuilding common UI components instead of focusing on application-specific features.</p>
+                    </div>
+                    <div class="project-impact">
+                        <span class="impact-label">Impact:</span>
+                        <p>Provides a library of reusable, type-safe components that accelerate development and ensure design consistency.</p>
+                    </div>
+                    <div class="project-stack">
+                        <span>React.js</span>
+                        <span>TypeScript</span>
+                        <span>Tailwind</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/fabpot-glitch/React_component" target="_blank" class="btn-github">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.15 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.62.24 2.85.12 3.15.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                            View Repository
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- React Interactions -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=600&h=400&fit=crop" alt="React Interactions" />
+                    <div class="project-image-overlay"></div>
+                    <span class="project-status-badge">Live</span>
+                </div>
+                <div class="project-card-content">
+                    <h3 class="project-name">React Interactions</h3>
+                    <div class="project-problem">
+                        <span class="problem-label">Problem Solved:</span>
+                        <p>Building interactive and animated user interfaces requires complex state management and animation logic.</p>
+                    </div>
+                    <div class="project-impact">
+                        <span class="impact-label">Impact:</span>
+                        <p>Explores advanced interaction patterns and animations, making React apps more engaging and user-friendly.</p>
+                    </div>
+                    <div class="project-stack">
+                        <span>React.js</span>
+                        <span>TypeScript</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/fabpot-glitch/react-interactions" target="_blank" class="btn-github">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.15 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.62.24 2.85.12 3.15.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                            View Repository
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Automation Use Case Analyzer -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=400&fit=crop" alt="Automation Analyzer" />
+                    <div class="project-image-overlay"></div>
+                    <span class="project-status-badge">Live</span>
+                </div>
+                <div class="project-card-content">
+                    <h3 class="project-name">Automation Use Case Analyzer</h3>
+                    <div class="project-problem">
+                        <span class="problem-label">Problem Solved:</span>
+                        <p>Businesses struggle to identify which workflows can be automated for maximum efficiency gains.</p>
+                    </div>
+                    <div class="project-impact">
+                        <span class="impact-label">Impact:</span>
+                        <p>Analyzes business processes to recommend automation opportunities, saving time and reducing operational costs.</p>
+                    </div>
+                    <div class="project-stack">
+                        <span>TypeScript</span>
+                        <span>Node.js</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/fabpot-glitch/automation-use-case-analyzer" target="_blank" class="btn-github">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.15 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.62.24 2.85.12 3.15.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                            View Repository
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Calendar View -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=600&h=400&fit=crop" alt="Calendar View" />
+                    <div class="project-image-overlay"></div>
+                    <span class="project-status-badge">Live</span>
+                </div>
+                <div class="project-card-content">
+                    <h3 class="project-name">Calendar View</h3>
+                    <div class="project-problem">
+                        <span class="problem-label">Problem Solved:</span>
+                        <p>Users need an intuitive way to manage events, appointments, and schedules without complex interfaces.</p>
+                    </div>
+                    <div class="project-impact">
+                        <span class="impact-label">Impact:</span>
+                        <p>Simplifies event management with an intuitive, responsive calendar interface that works across all devices.</p>
+                    </div>
+                    <div class="project-stack">
+                        <span>JavaScript</span>
+                        <span>HTML5</span>
+                        <span>CSS3</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/fabpot-glitch/calendar-view" target="_blank" class="btn-github">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.15 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.62.24 2.85.12 3.15.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                            View Repository
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== ACHIEVEMENTS ====== -->
+    <section class="achievements-section" id="achievements">
+        <div class="container">
+            <div class="achievements-header">
+                <span class="section-tag">Recognition</span>
+                <h2 class="section-title">Achievements &amp; Recognition</h2>
+            </div>
+            <div class="achievement-grid">
+                <div class="achievement-card">
+                    <div class="achievement-icon">🏆</div>
+                    <div class="achievement-number">#14,346</div>
+                    <p>Among <strong>356,000+</strong> participants in NCAT All India Aptitude Test</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">🎯</div>
+                    <div class="achievement-number">Appreciation</div>
+                    <p>Certificate at <strong>IIIT Sri City</strong> 60-hour Agentic AI Hackathon (100+ participants)</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">📦</div>
+                    <div class="achievement-number">100+</div>
+                    <p>GitHub commits · Active open-source contributor at <strong>github.com/fabpot-glitch</strong></p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">⭐</div>
+                    <div class="achievement-number">96%</div>
+                    <p>Score in Intermediate board examinations · Mentorship recognition</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== CERTIFICATIONS ====== -->
+    <section class="certifications-section" id="certifications">
+        <div class="container">
+            <div class="certifications-header">
+                <span class="section-tag">Credentials</span>
+                <h2 class="section-title">Certifications</h2>
+                <p class="certifications-subtitle">Professional certifications and course completions</p>
+            </div>
+            <div class="certifications-grid">
+                <!-- Pragati Path to Future -->
+                <div class="cert-card">
+                    <div class="cert-icon">🏅</div>
+                    <div class="cert-content">
+                        <h3>Pragati Path to Future</h3>
+                        <p>Successfully completed the comprehensive development program</p>
+                        <span class="cert-issuer">Pragati Program</span>
+                        <span class="cert-year">2026</span>
+                        <a href="certificates/Pragati-Cohort.pdf" target="_blank" class="cert-btn">View Certificate →</a>
+                    </div>
+                    <div class="cert-hover-icon">📜</div>
+                </div>
+
+                <!-- Agentica Hackathon -->
+                <div class="cert-card">
+                    <div class="cert-icon">🤖</div>
+                    <div class="cert-content">
+                        <h3>Agentica Hackathon</h3>
+                        <p>Participated in AI/ML focused hackathon with innovative solutions</p>
+                        <span class="cert-issuer">Agentica</span>
+                        <span class="cert-year">2026</span>
+                        <a href="certificates/Agentica-Hackathon.jpeg" target="_blank" class="cert-btn">View Certificate →</a>
+                    </div>
+                    <div class="cert-hover-icon">⚡</div>
+                </div>
+
+                <!-- iAccelerate Women Hackathon -->
+                <div class="cert-card">
+                    <div class="cert-icon">💪</div>
+                    <div class="cert-content">
+                        <h3>iAccelerate Women Hackathon</h3>
+                        <p>Empowering women in tech through competitive programming</p>
+                        <span class="cert-issuer">iAccelerate</span>
+                        <span class="cert-year">2026</span>
+                        <a href="certificates/iAccelerate-Hackathon.pdf" target="_blank" class="cert-btn">View Certificate →</a>
+                    </div>
+                    <div class="cert-hover-icon">🚀</div>
+                </div>
+
+                <!-- Infosys Springboard AI Primer -->
+                <div class="cert-card">
+                    <div class="cert-icon">🎓</div>
+                    <div class="cert-content">
+                        <h3>Infosys Springboard · AI Primer</h3>
+                        <p>Certificate of Achievement - Artificial Intelligence Primer Certification</p>
+                        <span class="cert-issuer">Infosys Springboard</span>
+                        <span class="cert-year">2026</span>
+                        <a href="certificates/Infosys-AI-Primer.pdf" target="_blank" class="cert-btn">View Certificate →</a>
+                    </div>
+                    <div class="cert-hover-icon">📖</div>
+                </div>
+
+                <!-- Anthropic AI Fluency Framework -->
+                <div class="cert-card">
+                    <div class="cert-icon">🔬</div>
+                    <div class="cert-content">
+                        <h3>Anthropic · AI Fluency Framework &amp; Foundations</h3>
+                        <p>Comprehensive certification covering AI Fluency Framework and core foundations</p>
+                        <span class="cert-issuer">Anthropic</span>
+                        <span class="cert-year">2026</span>
+                        <a href="https://verify.skilljar.com/c/cx8hedu635mq" target="_blank" class="cert-btn">View Certificate →</a>
+                    </div>
+                    <div class="cert-hover-icon">🧠</div>
+                </div>
+
+                <!-- Anthropic AI Fluency Nonprofits -->
+                <div class="cert-card">
+                    <div class="cert-icon">🤝</div>
+                    <div class="cert-content">
+                        <h3>Anthropic · AI Fluency for Nonprofits &amp; Educators</h3>
+                        <p>Specialized certification for applying AI in nonprofit and educational settings</p>
+                        <span class="cert-issuer">Anthropic</span>
+                        <span class="cert-year">2026</span>
+                        <a href="#" target="_blank" class="cert-btn">View Certificate →</a>
+                    </div>
+                    <div class="cert-hover-icon">📚</div>
+                </div>
+
+                <!-- Anthropic Agent Skills -->
+                <div class="cert-card">
+                    <div class="cert-icon">⚙️</div>
+                    <div class="cert-content">
+                        <h3>Anthropic · Introduction to Agent Skills</h3>
+                        <p>Foundational certification for building AI agents with Claude API</p>
+                        <span class="cert-issuer">Anthropic</span>
+                        <span class="cert-year">2026</span>
+                        <a href="#" target="_blank" class="cert-btn">View Certificate →</a>
+                    </div>
+                    <div class="cert-hover-icon">🤖</div>
+                </div>
+
+                <!-- Anthropic Building with Claude API -->
+                <div class="cert-card">
+                    <div class="cert-icon">🛠️</div>
+                    <div class="cert-content">
+                        <h3>Anthropic · Building with Claude API</h3>
+                        <p>Hands-on certification for developing applications using Claude API</p>
+                        <span class="cert-issuer">Anthropic</span>
+                        <span class="cert-year">2026</span>
+                        <a href="https://verify.skilljar.com/c/cda5m6ouwcyn" target="_blank" class="cert-btn">View Certificate →</a>
+                    </div>
+                    <div class="cert-hover-icon">🔧</div>
+                </div>
+
+                <!-- Anthropic Claude with Google Vertex AI -->
+                <div class="cert-card">
+                    <div class="cert-icon">☁️</div>
+                    <div class="cert-content">
+                        <h3>Anthropic · Claude with Google Vertex AI</h3>
+                        <p>Certification for integrating Claude with Google Vertex AI platform</p>
+                        <span class="cert-issuer">Anthropic</span>
+                        <span class="cert-year">2026</span>
+                        <a href="https://verify.skilljar.com/c/b93w78qjyrvw" target="_blank" class="cert-btn">View Certificate →</a>
+                    </div>
+                    <div class="cert-hover-icon">☁️</div>
+                </div>
+
+                <!-- EY Forage Technology Risk -->
+                <div class="cert-card">
+                    <div class="cert-icon">📊</div>
+                    <div class="cert-content">
+                        <h3>EY Forage · Technology Risk</h3>
+                        <p>EY Technology Risk Virtual Job Simulation - Certificate of Completion</p>
+                        <span class="cert-issuer">EY Forage</span>
+                        <span class="cert-year">2026</span>
+                        <a href="certificates/EY-Forage.jpeg" target="_blank" class="cert-btn">View Certificate →</a>
+                    </div>
+                    <div class="cert-hover-icon">📈</div>
+                </div>
+
+                <!-- Internshala Full Stack Development -->
+                <div class="cert-card">
+                    <div class="cert-icon">💼</div>
+                    <div class="cert-content">
+                        <h3>Internshala · Full Stack Development Internship</h3>
+                        <p>Certificate of Selection - Full Stack Development Internship at Unessa Foundation</p>
+                        <span class="cert-issuer">Internshala</span>
+                        <span class="cert-year">2026</span>
+                        <a href="#" target="_blank" class="cert-btn">View Certificate →</a>
+                    </div>
+                    <div class="cert-hover-icon">🌟</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== EDUCATION ====== -->
+    <section class="education-section" id="education">
+        <div class="container">
+            <div class="education-header">
+                <span class="section-tag">Education</span>
+                <h2 class="section-title">Academic Background</h2>
+            </div>
+            <div class="education-grid">
+                <div class="edu-card">
+                    <div class="edu-icon">🎓</div>
+                    <div class="edu-content">
+                        <h3>Mohan Babu University</h3>
+                        <p class="edu-degree">B.Tech in Computer Science &amp; Engineering</p>
+                        <div class="edu-meta">
+                            <span class="edu-gpa">GPA: <strong>9.2/10</strong></span>
+                            <span class="edu-year">2023 - 2027</span>
+                            <span class="edu-location">Tirupati, Andhra Pradesh</span>
+                        </div>
+                        <div class="edu-highlights">
+                            <span>📚 Core: ML, DSA, DBMS, OS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="edu-card">
+                    <div class="edu-icon">📐</div>
+                    <div class="edu-content">
+                        <h3>Sri Chaitanya Junior College</h3>
+                        <p class="edu-degree">Intermediate (MPC)</p>
+                        <div class="edu-meta">
+                            <span class="edu-gpa">Percentage: <strong>96%</strong></span>
+                            <span class="edu-year">2021 - 2023</span>
+                            <span class="edu-location">Tirupati, Andhra Pradesh</span>
+                        </div>
+                        <div class="edu-highlights">
+                            <span>📊 Mathematics, Physics, Chemistry</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="edu-card">
+                    <div class="edu-icon">🏫</div>
+                    <div class="edu-content">
+                        <h3>B.S.R Girls High School</h3>
+                        <p class="edu-degree">Secondary Education (10th)</p>
+                        <div class="edu-meta">
+                            <span class="edu-gpa">Percentage: <strong>100%</strong></span>
+                            <span class="edu-year">2020</span>
+                            <span class="edu-location">Dharmavaram, Satyasai District</span>
+                        </div>
+                        <div class="edu-highlights">
+                            <span>🏆 Perfect Score</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== CONTACT SECTION - PREMIUM REDESIGN ====== -->
+    <section class="contact-section" id="contact">
+        <!-- Animated Background Orbs -->
+        <div class="bg-orbs">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+        </div>
+
+        <div class="container">
+            <div class="contact-wrapper">
+                <!-- Header -->
+                <div class="contact-header">
+                    <span class="badge-connect">
+                        <span class="dot"></span>
+                        Connect
+                    </span>
+                    <h2 class="contact-title">
+                        Get In <span class="accent">Touch</span>
+                    </h2>
+                    <p class="contact-subtitle">Let's Build Something Amazing Together 🚀</p>
+                </div>
+
+                <!-- Two-Column Grid -->
+                <div class="contact-grid">
+                    <!-- LEFT SIDE -->
+                    <div class="contact-left">
+                        <p class="contact-intro">
+                            I'm always excited to discuss new opportunities, collaborate on interesting projects, or simply chat about the latest in tech. Whether you're a recruiter, fellow developer, or someone with a cool idea, I'd love to hear from you!
+                        </p>
+
+                        <!-- Availability Badge -->
+                        <div class="availability-badge">
+                            <span class="pulse-dot"></span>
+                            Open to Internships & Full-Time Opportunities
+                        </div>
+
+                        <!-- Contact Cards - 2x2 Grid -->
+                        <div class="contact-cards">
+                            <!-- Email -->
+                            <a href="mailto:sakenikhitha102@gmail.com" class="contact-card" data-copy="sakenikhitha102@gmail.com">
+                                <span class="icon">📧</span>
+                                <div class="info">
+                                    <span class="label">Email</span>
+                                    <span class="value">sakenikhitha102@gmail.com</span>
+                                </div>
+                                <span class="copy-feedback">✓ Copied</span>
+                            </a>
+
+                            <!-- Phone -->
+                            <a href="tel:+919063982693" class="contact-card">
+                                <span class="icon">📱</span>
+                                <div class="info">
+                                    <span class="label">Phone</span>
+                                    <span class="value">+91 90639 82693</span>
+                                </div>
+                            </a>
+
+                            <!-- LinkedIn -->
+                            <a href="https://www.linkedin.com/in/nikhitha-sake-530449307" target="_blank" class="contact-card">
+                                <span class="icon">💼</span>
+                                <div class="info">
+                                    <span class="label">LinkedIn</span>
+                                    <span class="value">Nikhitha Sake</span>
+                                </div>
+                            </a>
+
+                            <!-- GitHub -->
+                            <a href="https://github.com/fabpot-glitch" target="_blank" class="contact-card">
+                                <span class="icon">🖥</span>
+                                <div class="info">
+                                    <span class="label">GitHub</span>
+                                    <span class="value">fabpot-glitch</span>
+                                </div>
+                            </a>
+                        </div>
+
+                        <!-- Social Links -->
+                        <div class="social-links">
+                            <a href="https://github.com/fabpot-glitch" target="_blank" class="social-btn" aria-label="GitHub">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.15 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.62.24 2.85.12 3.15.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                                </svg>
+                                <span class="tooltip">GitHub</span>
+                            </a>
+
+                            <a href="https://www.linkedin.com/in/nikhitha-sake-530449307" target="_blank" class="social-btn" aria-label="LinkedIn">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                </svg>
+                                <span class="tooltip">LinkedIn</span>
+                            </a>
+
+                            <a href="mailto:sakenikhitha102@gmail.com" class="social-btn" aria-label="Email">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                    <polyline points="22,6 12,13 2,6"/>
+                                </svg>
+                                <span class="tooltip">Email</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT SIDE - FORM -->
+                    <div class="contact-right">
+                        <div class="form-card">
+                            <h3>Send a Message</h3>
+
+                            <form id="contactForm" onsubmit="return handleSubmit(event)">
+                                <div class="form-group">
+                                    <label for="contactName">Full Name <span class="required">*</span></label>
+                                    <input type="text" id="contactName" placeholder="Your full name" required />
+                                    <span class="error-message">Please enter your name</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="contactEmail">Email Address <span class="required">*</span></label>
+                                    <input type="email" id="contactEmail" placeholder="your.email@example.com" required />
+                                    <span class="error-message">Please enter a valid email</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="contactSubject">Subject <span class="required">*</span></label>
+                                    <input type="text" id="contactSubject" placeholder="What's this about?" required />
+                                    <span class="error-message">Please enter a subject</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="contactMessage">Message <span class="required">*</span></label>
+                                    <textarea id="contactMessage" rows="4" placeholder="Tell me about your project or opportunity..." required></textarea>
+                                    <span class="error-message">Please enter your message</span>
+                                </div>
+
+                                <button type="submit" class="submit-btn" id="submitBtn">
+                                    <span>Send Message →</span>
+                                    <span class="spinner"></span>
+                                </button>
+                            </form>
+
+                            <div class="form-success" id="formSuccess">
+                                <div class="checkmark">✓</div>
+                                <p>Message Sent Successfully!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== FOOTER ====== -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <span class="footer-logo">SN</span>
+                    <h3>Sake Nikhitha</h3>
+                    <p class="footer-title">Aspiring ML Engineer · Full-Stack Developer</p>
+                    <div class="footer-social">
+                        <a href="https://www.linkedin.com/in/nikhitha-sake-530449307" target="_blank" aria-label="LinkedIn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        </a>
+                        <a href="https://github.com/fabpot-glitch" target="_blank" aria-label="GitHub">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.15 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.62.24 2.85.12 3.15.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                        </a>
+                        <a href="mailto:sakenikhitha102@gmail.com" aria-label="Email">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p><a href="mailto:sakenikhitha102@gmail.com">sakenikhitha102@gmail.com</a></p>
+                    <p><a href="tel:+919063982693">+91 90639 82693</a></p>
+                    <p><a href="https://www.linkedin.com/in/nikhitha-sake-530449307" target="_blank">LinkedIn</a></p>
+                    <div class="footer-clock">
+                        <span id="footerClock">IST · 00:00:00</span>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Navigate</h4>
+                    <ul>
+                        <li><a href="#experience">Experience</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#certifications">Certifications</a></li>
+                        <li><a href="#education">Education</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-copy">
+                    &copy; 2026 Sake Nikhitha · Built with precision &amp; purpose
+                </div>
+                <div class="footer-tech">
+                    <span>React</span>
+                    <span>FastAPI</span>
+                    <span>MongoDB</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
