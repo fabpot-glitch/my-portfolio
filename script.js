@@ -21,48 +21,54 @@ document.addEventListener('DOMContentLoaded', () => {
 // ===== CURSOR SPOTLIGHT =====
 const spotlight = document.getElementById('cursorSpotlight');
 
-document.addEventListener('mousemove', (e) => {
-    const x = e.clientX;
-    const y = e.clientY;
-    spotlight.style.left = x + 'px';
-    spotlight.style.top = y + 'px';
-});
+if (spotlight) {
+    document.addEventListener('mousemove', (e) => {
+        const x = e.clientX;
+        const y = e.clientY;
+        spotlight.style.left = x + 'px';
+        spotlight.style.top = y + 'px';
+    });
+}
 
 // ===== NAV SCROLL =====
 const nav = document.getElementById('siteNav');
 let lastScroll = 0;
 
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    if (currentScroll > 80) {
-        nav.classList.add('scrolled');
-    } else {
-        nav.classList.remove('scrolled');
-    }
-    if (currentScroll > lastScroll && currentScroll > 200) {
-        nav.style.transform = 'translateY(-100%)';
-    } else {
-        nav.style.transform = 'translateY(0)';
-    }
-    lastScroll = currentScroll;
-});
+if (nav) {
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        if (currentScroll > 80) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
+        }
+        if (currentScroll > lastScroll && currentScroll > 200) {
+            nav.style.transform = 'translateY(-100%)';
+        } else {
+            nav.style.transform = 'translateY(0)';
+        }
+        lastScroll = currentScroll;
+    });
+}
 
 // ===== MOBILE NAV TOGGLE =====
 const toggle = document.getElementById('navToggle');
 const navLinks = document.querySelector('.nav-links');
 
-toggle.addEventListener('click', () => {
-    toggle.classList.toggle('active');
-    navLinks.classList.toggle('active');
-});
-
-// Close nav on link click
-document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-        toggle.classList.remove('active');
-        navLinks.classList.remove('active');
+if (toggle && navLinks) {
+    toggle.addEventListener('click', () => {
+        toggle.classList.toggle('active');
+        navLinks.classList.toggle('active');
     });
-});
+
+    // Close nav on link click
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            toggle.classList.remove('active');
+            navLinks.classList.remove('active');
+        });
+    });
+}
 
 // ===== LIVE IST CLOCK =====
 function updateClock() {
@@ -113,61 +119,76 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     });
 });
 
-// ===== CONTACT FORM HANDLING =====
-function handleSubmit(event) {
-    event.preventDefault();
-
-    const form = document.getElementById('contactForm');
+// ===== CONTACT FORM HANDLING (UPDATED) =====
+document.addEventListener('DOMContentLoaded', function() {
     const submitBtn = document.getElementById('submitBtn');
     const successMsg = document.getElementById('formSuccess');
-    const fields = form.querySelectorAll('input, textarea');
-    let isValid = true;
-
-    // Validate all fields
-    fields.forEach(field => {
-        const errorMsg = field.parentElement.querySelector('.error-message');
-        if (!field.value.trim()) {
-            field.classList.add('error');
-            if (errorMsg) errorMsg.classList.add('show');
-            isValid = false;
-        } else {
-            field.classList.remove('error');
-            if (errorMsg) errorMsg.classList.remove('show');
-        }
-    });
-
-    // Validate email
-    const email = document.getElementById('contactEmail');
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (email.value && !emailPattern.test(email.value)) {
-        email.classList.add('error');
-        const errorMsg = email.parentElement.querySelector('.error-message');
-        if (errorMsg) {
-            errorMsg.textContent = 'Please enter a valid email address';
-            errorMsg.classList.add('show');
-        }
-        isValid = false;
+    const contactForm = document.getElementById('contactForm');
+    
+    if (submitBtn && contactForm) {
+        submitBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('contactName');
+            const email = document.getElementById('contactEmail');
+            const subject = document.getElementById('contactSubject');
+            const message = document.getElementById('contactMessage');
+            
+            const fields = [name, email, subject, message];
+            let isValid = true;
+            
+            // Clear previous errors
+            fields.forEach(field => {
+                field.classList.remove('error');
+                const errorMsg = field.parentElement.querySelector('.error-message');
+                if (errorMsg) errorMsg.classList.remove('show');
+            });
+            
+            // Validate all fields
+            fields.forEach(field => {
+                const errorMsg = field.parentElement.querySelector('.error-message');
+                if (!field.value.trim()) {
+                    field.classList.add('error');
+                    if (errorMsg) errorMsg.classList.add('show');
+                    isValid = false;
+                }
+            });
+            
+            // Validate email
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (email.value && !emailPattern.test(email.value)) {
+                email.classList.add('error');
+                const errorMsg = email.parentElement.querySelector('.error-message');
+                if (errorMsg) {
+                    errorMsg.textContent = 'Please enter a valid email address';
+                    errorMsg.classList.add('show');
+                }
+                isValid = false;
+            }
+            
+            if (!isValid) return;
+            
+            // Show loading state
+            submitBtn.classList.add('loading');
+            submitBtn.disabled = true;
+            
+            // Simulate sending (replace with actual API call)
+            setTimeout(() => {
+                submitBtn.classList.remove('loading');
+                submitBtn.disabled = false;
+                successMsg.classList.add('show');
+                
+                // Reset form
+                fields.forEach(field => field.value = '');
+                
+                // Hide success after 5 seconds
+                setTimeout(() => {
+                    successMsg.classList.remove('show');
+                }, 5000);
+            }, 1500);
+        });
     }
-
-    if (!isValid) return;
-
-    // Show loading state
-    submitBtn.classList.add('loading');
-    submitBtn.disabled = true;
-
-    // Simulate sending (replace with actual API call)
-    setTimeout(() => {
-        submitBtn.classList.remove('loading');
-        submitBtn.disabled = false;
-        successMsg.classList.add('show');
-        form.reset();
-
-        // Hide success after 5 seconds
-        setTimeout(() => {
-            successMsg.classList.remove('show');
-        }, 5000);
-    }, 2000);
-}
+});
 
 // ===== COPY TO CLIPBOARD =====
 document.querySelectorAll('.contact-card[data-copy]').forEach(card => {
@@ -181,11 +202,9 @@ document.querySelectorAll('.contact-card[data-copy]').forEach(card => {
                 feedback.classList.add('show');
                 setTimeout(() => feedback.classList.remove('show'), 2000);
             }).catch(() => {
-                // Fallback for older browsers
                 fallbackCopy(text, feedback);
             });
         } else {
-            // Fallback for older browsers
             fallbackCopy(text, feedback);
         }
     });
@@ -226,11 +245,13 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 // Observe all animated elements
-document.querySelectorAll('.skill-card, .achievement-card, .project-card, .timeline-card, .edu-card, .cert-card, .contact-card, .social-btn, .contact-right').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(el);
+document.querySelectorAll('.skill-card, .achievement-card, .project-card, .timeline-card, .edu-card, .cert-card, .contact-card, .social-btn, .contact-right, .value-card').forEach(el => {
+    if (el) {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+    }
 });
 
 // ===== KEYBOARD ACCESSIBILITY =====
