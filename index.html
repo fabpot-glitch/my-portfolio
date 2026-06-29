@@ -9,6 +9,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:opsz,wght@14..32,300..700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
+    <!-- NAV ALWAYS VISIBLE OVERRIDE -->
+    <style>
+        .site-nav {
+            transform: translateY(0) !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+            top: 0 !important;
+        }
+    </style>
 </head>
 <body>
 
@@ -23,7 +32,7 @@
         </div>
     </div>
 
-    <!-- ====== NAV ====== -->
+    <!-- ====== NAV - PERMANENTLY VISIBLE ====== -->
     <nav class="site-nav" id="siteNav">
         <div class="nav-inner">
             <div class="nav-brand">
@@ -31,7 +40,7 @@
                 <span class="nav-name">Sake Nikhitha</span>
             </div>
             <div class="nav-clock" id="navClock">IST · 00:00:00</div>
-            <ul class="nav-links">
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#experience" class="nav-link">Experience</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
                 <li><a href="#education" class="nav-link">Education</a></li>
@@ -79,7 +88,6 @@
                     <div class="stat"><span class="stat-number">4</span><span class="stat-label">Deployed Apps</span></div>
                     <div class="stat"><span class="stat-number">100+</span><span class="stat-label">Commits</span></div>
                     <div class="stat"><span class="stat-number">90%+</span><span class="stat-label">Model Accuracy</span></div>
-                    
                 </div>
             </div>
 
@@ -118,57 +126,31 @@
         <!-- MARQUEE -->
         <div class="marquee-wrap">
             <div class="marquee-track" id="marqueeTrack">
-                <span>Full-Stack Development</span>
-                <span>·</span>
-                <span>FastAPI</span>
-                <span>·</span>
-                <span>React.js</span>
-                <span>·</span>
-                <span>TensorFlow</span>
-                <span>·</span>
-                <span>Hugging Face</span>
-                <span>·</span>
-                <span>MongoDB</span>
-                <span>·</span>
-                <span>Scikit-learn</span>
-                <span>·</span>
-                <span>NLP</span>
-                <span>·</span>
-                
-                <span>Node.js</span>
-                <span>·</span>
-                <span>Flask</span>
-                <span>·</span>
-                <span>MySQL</span>
-                <span>·</span>
-                <span>Git</span>
-                <span>·</span>
+                <span>Full-Stack Development</span><span>·</span>
+                <span>FastAPI</span><span>·</span>
+                <span>React.js</span><span>·</span>
+                <span>TensorFlow</span><span>·</span>
+                <span>Hugging Face</span><span>·</span>
+                <span>MongoDB</span><span>·</span>
+                <span>Scikit-learn</span><span>·</span>
+                <span>NLP</span><span>·</span>
+                <span>Node.js</span><span>·</span>
+                <span>Flask</span><span>·</span>
+                <span>MySQL</span><span>·</span>
+                <span>Git</span><span>·</span>
                 <!-- Duplicate for seamless loop -->
-                <span>Full-Stack Development</span>
-                <span>·</span>
-                <span>FastAPI</span>
-                <span>·</span>
-                <span>React.js</span>
-                <span>·</span>
-                <span>TensorFlow</span>
-                <span>·</span>
-                <span>Hugging Face</span>
-                <span>·</span>
-                <span>MongoDB</span>
-                <span>·</span>
-                <span>Scikit-learn</span>
-                <span>·</span>
-                <span>NLP</span>
-                <span>·</span>
-                
-                <span>Node.js</span>
-                <span>·</span>
-                <span>Flask</span>
-                <span>·</span>
-                <span>MySQL</span>
-                <span>·</span>
-                <span>Git</span>
-                <span>·</span>
+                <span>Full-Stack Development</span><span>·</span>
+                <span>FastAPI</span><span>·</span>
+                <span>React.js</span><span>·</span>
+                <span>TensorFlow</span><span>·</span>
+                <span>Hugging Face</span><span>·</span>
+                <span>MongoDB</span><span>·</span>
+                <span>Scikit-learn</span><span>·</span>
+                <span>NLP</span><span>·</span>
+                <span>Node.js</span><span>·</span>
+                <span>Flask</span><span>·</span>
+                <span>MySQL</span><span>·</span>
+                <span>Git</span><span>·</span>
             </div>
         </div>
     </header>
@@ -286,10 +268,8 @@
                         <p class="timeline-location">Virtual</p>
                         <ul>
                             <li>Completed the <strong>Infosys Springboard 7.0 AI/ML Virtual Internship</strong>, mastering industry-standard workflows in Machine Learning, Data Analytics, and Predictive Modeling.</li>
-
-<li>Built practical expertise across the <strong>complete AI project lifecycle</strong>, from data preprocessing and feature engineering to model training, evaluation, and deployment concepts.</li>
-
-<li>Leveraged <strong>Python, Pandas, NumPy, and Scikit-learn</strong> to analyze datasets and develop data-driven solutions for real-world business challenges.</li>
+                            <li>Built practical expertise across the <strong>complete AI project lifecycle</strong>, from data preprocessing and feature engineering to model training, evaluation, and deployment concepts.</li>
+                            <li>Leveraged <strong>Python, Pandas, NumPy, and Scikit-learn</strong> to analyze datasets and develop data-driven solutions for real-world business challenges.</li>
                         </ul>
                     </div>
                 </div>
@@ -575,7 +555,7 @@
                     <div class="project-stack">
                         <span>React.js</span>
                         <span>TypeScript</span>
-                        <span>JavaSript</span>
+                        <span>JavaScript</span>
                         <span>CSS</span>
                     </div>
                     <div class="project-links">
@@ -1165,5 +1145,20 @@
     </footer>
 
     <script src="script.js"></script>
+    <!-- NAV ALWAYS VISIBLE: neutralise any scroll-hide logic from script.js -->
+    <script>
+        (function () {
+            var nav = document.getElementById('siteNav');
+            if (!nav) return;
+            // Override any MutationObserver or style changes that hide the nav
+            var _setProperty = nav.style.setProperty.bind(nav.style);
+            // Re-apply visibility after every scroll event so script.js can't hide it
+            window.addEventListener('scroll', function () {
+                nav.style.setProperty('transform', 'translateY(0)', 'important');
+                nav.style.setProperty('opacity', '1', 'important');
+                nav.style.setProperty('visibility', 'visible', 'important');
+            }, { passive: true });
+        })();
+    </script>
 </body>
 </html>
