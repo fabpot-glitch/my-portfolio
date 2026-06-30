@@ -616,9 +616,12 @@ if (typingElement) {
 // LIVE IST CLOCK
 // ============================================================
 function updateClock() {
+    // now.getTime() is an absolute UTC epoch timestamp already,
+    // so we only need to add the IST offset (UTC+5:30) — no
+    // local-timezone correction should be layered on top of it.
     const now = new Date();
-    const istOffset = 5.5 * 60 * 60 * 1000;
-    const istTime = new Date(now.getTime() + istOffset + now.getTimezoneOffset() * 60 * 1000);
+    const istOffsetMs = (5 * 60 + 30) * 60 * 1000;
+    const istTime = new Date(now.getTime() + istOffsetMs);
 
     const hours = String(istTime.getUTCHours()).padStart(2, '0');
     const minutes = String(istTime.getUTCMinutes()).padStart(2, '0');

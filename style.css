@@ -1,5 +1,5 @@
 /* ============================================================
-   RESET & BASE - Premium Edition
+   RESET & BASE - Cinematic Edition
    ============================================================ */
 *,
 *::before,
@@ -18,7 +18,7 @@
     --accent-gradient: linear-gradient(135deg, #ff4d30, #ff7a5c, #ff4d30);
     --dark: #1a1614;
     --text: #2c241e;
-    --text-light: #6b5f55;
+    --text-light: #5a4d42;
     --white: #ffffff;
     --off-white: #faf8f5;
     --font-serif: 'Fraunces', serif;
@@ -28,6 +28,7 @@
     --glass-bg: rgba(255, 255, 255, 0.08);
     --glass-border: rgba(255, 255, 255, 0.15);
     --transition-smooth: cubic-bezier(0.23, 1, 0.32, 1);
+    --letterbox-h: 0px;
 }
 
 html {
@@ -53,6 +54,29 @@ body {
 }
 
 /* ============================================================
+   CINEMATIC LETTERBOX BARS
+   ============================================================ */
+.letterbox {
+    position: fixed;
+    left: 0;
+    right: 0;
+    height: 0;
+    background: #0a0808;
+    z-index: 9997;
+    pointer-events: none;
+    transition: height 0.6s var(--transition-smooth);
+}
+
+.letterbox-top { top: 0; }
+.letterbox-bottom { bottom: 0; }
+
+/* Cinematic vignette REMOVED */
+body::after {
+    content: none;
+    display: none;
+}
+
+/* ============================================================
    FILM GRAIN - Subtle Texture
    ============================================================ */
 body::before {
@@ -64,7 +88,7 @@ body::before {
     height: 100vh;
     pointer-events: none;
     z-index: 9999;
-    opacity: 0.025;
+    opacity: 0.03;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
     background-repeat: repeat;
     background-size: 256px 256px;
@@ -132,7 +156,7 @@ body::before {
 .stagger-12 { transition-delay: 0.60s; }
 
 /* ============================================================
-   LOADER - Premium
+   LOADER - Cinematic
    ============================================================ */
 .loader {
     position: fixed;
@@ -168,6 +192,7 @@ body::before {
     opacity: 0;
     animation: fadeIn 1s ease forwards;
     animation-delay: 0.3s;
+    text-shadow: 0 0 30px rgba(255, 77, 48, 0.3);
 }
 
 .loader-bar {
@@ -185,6 +210,7 @@ body::before {
     background: var(--accent);
     border-radius: 2px;
     transition: width 0.3s ease;
+    box-shadow: 0 0 12px rgba(255, 77, 48, 0.6);
 }
 
 @keyframes fadeIn {
@@ -192,16 +218,16 @@ body::before {
 }
 
 /* ============================================================
-   CURSOR SPOTLIGHT - Premium Glow
+   CURSOR SPOTLIGHT - Cinematic Glow
    ============================================================ */
 .cursor-spotlight {
     position: fixed;
     pointer-events: none;
     z-index: 9998;
-    width: 800px;
-    height: 800px;
+    width: 900px;
+    height: 900px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(255, 77, 48, 0.04) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(255, 77, 48, 0.05) 0%, transparent 70%);
     transform: translate(-50%, -50%);
     will-change: transform;
     transition: opacity 0.3s ease;
@@ -217,7 +243,7 @@ body::before {
 }
 
 /* ============================================================
-   SECTION TAG - Premium
+   SECTION TAG - Cinematic
    ============================================================ */
 .section-tag {
     font-size: 0.6rem;
@@ -253,7 +279,7 @@ body::before {
 }
 
 /* ============================================================
-   NAV - Premium Styling - ALWAYS VISIBLE
+   NAV - Cinematic Styling - ALWAYS VISIBLE
    ============================================================ */
 .site-nav {
     position: fixed;
@@ -335,10 +361,12 @@ body::before {
     font-size: 0.85rem;
     letter-spacing: 0.02em;
     transition: transform 0.3s ease;
+    box-shadow: 0 0 0 0 rgba(255, 77, 48, 0.4);
 }
 
 .nav-logo:hover {
     transform: scale(1.05) rotate(-5deg);
+    box-shadow: 0 0 20px rgba(255, 77, 48, 0.35);
 }
 
 .nav-name {
@@ -473,7 +501,7 @@ body::before {
 }
 
 /* ============================================================
-   HERO - Premium Edition
+   HERO - Cinematic Edition (Full viewport height, video below)
    ============================================================ */
 .hero {
     padding: 140px 24px 0;
@@ -483,6 +511,20 @@ body::before {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1100px;
+    height: 700px;
+    background: radial-gradient(ellipse at center, rgba(255, 77, 48, 0.05), transparent 65%);
+    pointer-events: none;
+    z-index: -1;
 }
 
 .hero-grid {
@@ -564,6 +606,7 @@ body::before {
 .title-line.accent {
     color: var(--accent);
     position: relative;
+    text-shadow: 0 4px 40px rgba(255, 77, 48, 0.18);
 }
 
 .title-line.accent::after {
@@ -580,8 +623,8 @@ body::before {
 
 .hero-subtitle {
     font-size: 1.1rem;
-    font-weight: 400;
-    color: var(--text-light);
+    font-weight: 500;
+    color: var(--text);
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
@@ -592,7 +635,7 @@ body::before {
 .hero-summary {
     font-size: 1.05rem;
     max-width: 520px;
-    color: var(--text-light);
+    color: var(--text);
     line-height: 1.7;
     margin-bottom: 4px;
 }
@@ -718,7 +761,7 @@ body::before {
     opacity: 0.85;
 }
 
-/* ===== PORTRAIT ===== */
+/* ===== PORTRAIT - Cinematic, full color, no gray wash ===== */
 .portrait-wrapper {
     position: relative;
     width: 100%;
@@ -734,23 +777,23 @@ body::before {
     max-width: 380px;
     margin: 0 auto;
     background: #ddd6cb;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.10), 0 0 0 10px rgba(255, 255, 255, 0.5);
     transition: box-shadow 0.4s ease;
 }
 
-.portrait-frame:hover { box-shadow: 0 30px 80px rgba(255, 77, 48, 0.12); }
+.portrait-frame:hover { box-shadow: 0 35px 90px rgba(255, 77, 48, 0.18), 0 0 0 10px rgba(255, 255, 255, 0.6); }
 
 .portrait-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: 50% 20%;
-    filter: grayscale(0.6);
+    filter: saturate(1.1) contrast(1.04) brightness(1.02);
     transition: filter 0.8s var(--transition-smooth), transform 0.8s var(--transition-smooth);
     display: block;
 }
 
-.portrait-frame:hover .portrait-img { filter: grayscale(0); transform: scale(1.05); }
+.portrait-frame:hover .portrait-img { filter: saturate(1.25) contrast(1.06) brightness(1.04); transform: scale(1.05); }
 
 .portrait-overlay { position: absolute; inset: 0; pointer-events: none; border-radius: 50%; }
 
@@ -758,7 +801,7 @@ body::before {
     position: absolute;
     inset: 0;
     border-radius: 50%;
-    background: radial-gradient(circle at 50% 50%, rgba(255, 77, 48, 0.08) 0%, transparent 70%);
+    background: radial-gradient(circle at 50% 50%, rgba(255, 77, 48, 0.1) 0%, transparent 70%);
     opacity: 0;
     transition: opacity 0.8s ease;
 }
@@ -828,7 +871,7 @@ body::before {
 }
 
 /* ============================================================
-   MARQUEE - Premium
+   MARQUEE - Cinematic
    ============================================================ */
 .marquee-wrap {
     margin: 48px 0 0;
@@ -924,7 +967,7 @@ body::before {
 }
 
 /* ============================================================
-   SKILLS - Premium WITH ORANGE TOP BORDER ON ALL CARDS
+   SKILLS - Cinematic - ALL CARDS UNIFORM (LIGHT, ORANGE TOP BORDER)
    ============================================================ */
 .skills-section {
     padding: 80px 0;
@@ -962,6 +1005,7 @@ body::before {
     border: 1px solid rgba(0, 0, 0, 0.02);
     position: relative;
     overflow: hidden;
+    /* All cards get the same light background */
 }
 
 /* ===== ALL SKILL CARDS: permanent orange top border ===== */
@@ -973,7 +1017,7 @@ body::before {
     right: 0;
     height: 3px;
     background: var(--accent);
-    opacity: 1;          /* always visible */
+    opacity: 1;
     transition: opacity 0.4s ease;
 }
 
@@ -983,23 +1027,26 @@ body::before {
     border-color: var(--accent-light);
 }
 
-/* Full-stack cards keep their extra tint */
+/* Remove the blue/gradient backgrounds - all cards now use the same light cream */
 .skill-card.highlight-fullstack {
-    background: linear-gradient(135deg, rgba(255, 77, 48, 0.04), rgba(255, 77, 48, 0.01));
-    border-color: rgba(255, 77, 48, 0.08);
+    background: var(--cream);
+    /* Remove the gradient, use same as others */
+    border-color: rgba(0, 0, 0, 0.02);
 }
 
 .skill-card.highlight-fullstack:hover {
-    border-color: var(--accent);
-    box-shadow: 0 16px 48px rgba(255, 77, 48, 0.08);
+    border-color: var(--accent-light);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.06);
 }
 
 .skill-card.highlight-fullstack .skill-icon {
-    background: rgba(255, 77, 48, 0.06);
-    border-radius: 50%;
-    padding: 6px;
+    background: transparent;
+    /* Remove the circle background */
+    border-radius: 0;
+    padding: 0;
 }
 
+/* All skill icons now uniform */
 .skill-icon {
     font-size: 1.8rem;
     margin-bottom: 12px;
@@ -1039,13 +1086,24 @@ body::before {
     transition: all 0.3s ease;
 }
 
-.skill-card:hover .skill-badge { background: var(--accent); color: var(--white); }
+.skill-card:hover .skill-badge {
+    background: var(--accent);
+    color: var(--white);
+}
 
-.skill-card.highlight-fullstack .skill-badge { background: var(--accent); color: var(--white); }
-.skill-card.highlight-fullstack:hover .skill-badge { background: var(--accent-dark); }
+/* Remove the special fullstack badge treatment - all badges now uniform */
+.skill-card.highlight-fullstack .skill-badge {
+    background: rgba(255, 77, 48, 0.08);
+    color: var(--accent);
+}
+
+.skill-card.highlight-fullstack:hover .skill-badge {
+    background: var(--accent);
+    color: var(--white);
+}
 
 /* ============================================================
-   VALUE SECTION - Premium
+   VALUE SECTION - Cinematic
    ============================================================ */
 .value-section {
     padding: 80px 0;
@@ -1097,7 +1155,7 @@ body::before {
 .value-card p { font-size: 0.82rem; color: var(--text-light); line-height: 1.6; }
 
 /* ============================================================
-   EXPERIENCE - Premium
+   EXPERIENCE - Cinematic
    ============================================================ */
 .experience-section {
     background: var(--dark);
@@ -1111,7 +1169,17 @@ body::before {
     position: absolute;
     top: -50%; right: -20%;
     width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(255, 77, 48, 0.03), transparent 70%);
+    background: radial-gradient(circle, rgba(255, 77, 48, 0.04), transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.experience-section::after {
+    content: '';
+    position: absolute;
+    bottom: -40%; left: -15%;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(255, 77, 48, 0.025), transparent 70%);
     border-radius: 50%;
     pointer-events: none;
 }
@@ -1148,6 +1216,7 @@ body::before {
     background: var(--accent);
     border-radius: 50%;
     border: 2px solid var(--dark);
+    box-shadow: 0 0 14px rgba(255, 77, 48, 0.5);
 }
 
 .timeline-content {
@@ -1200,7 +1269,7 @@ body::before {
 .timeline-content strong { color: var(--white); }
 
 /* ============================================================
-   PROJECTS - Premium Edition
+   PROJECTS - Cinematic Edition
    ============================================================ */
 .projects-section { padding: 80px 0; background: var(--cream); position: relative; }
 .projects-header { margin-bottom: 48px; text-align: center; }
@@ -1275,13 +1344,13 @@ body::before {
 .project-image-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.2), transparent 60%);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.25), transparent 60%);
     pointer-events: none;
-    opacity: 0.5;
+    opacity: 0.55;
     transition: opacity 0.4s ease;
 }
 
-.project-card:hover .project-image-overlay { opacity: 0.7; }
+.project-card:hover .project-image-overlay { opacity: 0.75; }
 
 .project-status-badge {
     position: absolute;
@@ -1751,7 +1820,7 @@ body::before {
 }
 
 /* ============================================================
-   ACHIEVEMENTS - Premium
+   ACHIEVEMENTS - Cinematic
    ============================================================ */
 .achievements-section { padding: 80px 0; background: var(--white); }
 .achievements-header { text-align: center; margin-bottom: 48px; }
@@ -1792,7 +1861,7 @@ body::before {
 .achievement-card strong { color: var(--text); }
 
 /* ============================================================
-   CERTIFICATIONS - Premium
+   CERTIFICATIONS - Cinematic
    ============================================================ */
 .certifications-section {
     padding: 80px 0;
@@ -1926,7 +1995,7 @@ body::before {
 .cert-card .cert-content .cert-btn { align-self: flex-start; }
 
 /* ============================================================
-   EDUCATION - Premium
+   EDUCATION - Cinematic
    ============================================================ */
 .education-section { padding: 80px 0; background: var(--cream); }
 .education-header { text-align: center; margin-bottom: 48px; }
@@ -2002,7 +2071,7 @@ body::before {
 }
 
 /* ============================================================
-   CONTACT SECTION - Premium
+   CONTACT SECTION - Cinematic
    ============================================================ */
 .contact-section {
     padding: 80px 0;
@@ -2450,7 +2519,7 @@ body::before {
 @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
 /* ============================================================
-   FOOTER - Premium
+   FOOTER - Cinematic
    ============================================================ */
 .site-footer { background: var(--dark); color: #b0a89f; padding: 60px 0 24px; }
 
