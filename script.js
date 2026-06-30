@@ -17,10 +17,464 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 loader.classList.add('hidden');
                 document.body.style.overflow = 'visible';
+                // Dispatch event for cinematic letterbox
+                document.dispatchEvent(new Event('site:loaded'));
             }, 400);
         }
     }, 120);
 });
+
+// ============================================================
+// CINEMATIC 3D LAYER
+// Letterbox intro, mouse-parallax hero, 3D tilt cards,
+// scroll-driven dolly/rotate reveals. Pure enhancement —
+// does not touch any existing behavior in script.js.
+// ============================================================
+(function() {
+    'use strict';
+
+    var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var isCoarsePointer = !window.matchMedia('(hover: hover)').matches;
+
+    /* ========== Letterbox cinematic intro ========== */
+    function openLetterbox() {
+        var top = document.getElementById('letterboxTop');
+        var bottom = document.getElementById('letterboxBottom');
+        if (!top || !bottom) return;
+        requestAnimationFrame(function() {
+            setTimeout(function() {
+                top.classList.add('collapsed');
+                bottom.classList.add('collapsed');
+            }, 650);
+        });
+    }
+    document.addEventListener('site:loaded', openLetterbox);
+    // Fallback in case loader event never fires (e.g. script order issue)
+    window.addEventListener('load', function() {
+        setTimeout(openLetterbox, 1800);
+    });
+
+    if (prefersReduced) return; // skip all motion-heavy 3D below
+
+    /* ========== Assign cinematic reveal classes to section blocks ========== */
+    var dollySections = [
+        { sel: '.value-header', cls: 'cine-reveal' },
+        { sel: '.skills-header', cls: 'cine-reveal' },
+        { sel: '.exp-header', cls: 'cine-reveal-left' },
+        { sel: '.projects-header', cls: 'cine-reveal' },
+        { sel: '.github-showcase-content', cls: 'cine-reveal' },
+        { sel: '.achievements-header', cls: 'cine-reveal' },
+        { sel: '.certifications-header', cls: 'cine-reveal' },
+        { sel: '.education-header', cls: 'cine-reveal' },
+        { sel: '.contact-header', cls: 'cine-reveal' },
+        { sel: '.contact-left', cls: 'cine-reveal-left' },
+        { sel: '.contact-right', cls: 'cine-reveal-right' }
+    ];
+
+    var dollyObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                dollyObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2, rootMargin: '0px 0px -80px 0px' });
+
+    dollySections.forEach(function(s) {
+        document.querySelectorAll(s.sel).forEach(function(el) {
+            el.classList.add(s.cls);
+            dollyObserver.observe(el);
+        });
+    });
+
+    /* ========== 3D tilt on hover (project cards, skill cards, value cards, etc.) ========== */
+    if (!isCoarsePointer) {
+        var tiltCards = document.querySelectorAll('.tilt-card, .tilt-card-deep');
+
+        tiltCards.forEach(function(card) {
+            var maxTilt = card.classList.contains('tilt-card-deep') ? 10 : 7;
+            var lift = card.classList.contains('tilt-card-deep') ? 10 : 6;
+            var raf = null;
+
+            card.addEventListener('mousemove', function(e) {
+                var rect = card.getBoundingClientRect();
+                var x = (e.clientX - rect.left) / rect.width;
+                var y = (e.clientY - rect.top) / rect.height;
+                var rotateY = (x - 0.5) * maxTilt * 2;
+                var rotateX = (0.5 - y) * maxTilt * 2;
+
+                if (raf) cancelAnimationFrame(raf);
+                raf = requestAnimationFrame(function() {
+                    card.style.transform =
+                        'perspective(1200px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) translateZ(' + lift + 'px)';
+                });
+            });
+
+            card.addEventListener('mouseleave', function() {
+                if (raf) cancelAnimationFrame(raf);
+                card.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
+            });
+        });
+    }
+
+    /* ========== Hero mouse-parallax (portrait + floating badges) ========== */
+    var heroVisual = document.querySelector('.hero-visual');
+    var portraitWrapper = document.querySelector('.portrait-wrapper');
+    var hero = document.getElementById('hero');
+
+    if (heroVisual && portraitWrapper && hero && !isCoarsePointer) {
+        var heroRaf = null;
+        hero.addEventListener('mousemove', function(e) {
+            var rect = hero.getBoundingClientRect();
+            var px = (e.clientX - rect.left) / rect.width - 0.5;
+            var py = (e.clientY - rect.top) / rect.height - 0.5;
+
+            if (heroRaf) cancelAnimationFrame(heroRaf);
+            heroRaf = requestAnimationFrame(function() {
+                heroVisual.style.transform =
+                    'rotateY(' + (px * 10) + 'deg) rotateX(' + (-py * 8) + 'deg)';
+                portraitWrapper.style.transform =
+                    'translate(' + (px * -14) + 'px, ' + (py * -10) + 'px)';
+
+                document.querySelectorAll('.floating-badge').forEach(function(badge) {
+                    var depth = parseFloat(badge.getAttribute('data-depth')) || 0.06;
+                    var bx = px * 60 * depth * 10;
+                    var by = py * 60 * depth * 10;
+                    var z = badge.classList.contains('badge-1') ? 70 :
+                        badge.classList.contains('badge-2') ? 55 : 85;
+                    badge.style.transform =
+                        'translate(' + bx + 'px, ' + by + 'px) translateZ(' + z + 'px)';
+                });
+            });
+        });
+
+        hero.addEventListener('mouseleave', function() {
+            if (heroRaf) cancelAnimationFrame(heroRaf);
+            heroVisual.style.transform = 'rotateY(0deg) rotateX(0deg)';
+            portraitWrapper.style.transform = 'translate(0px, 0px)';
+            document.querySelectorAll('.floating-badge').forEach(function(badge) {
+                badge.style.transform = '';
+            });
+        });
+    }
+
+    /* ========== Scroll-linked cinematic dolly on hero (subtle zoom-out feel) ========== */
+    var heroStage = document.querySelector('.hero-stage');
+    if (heroStage) {
+        var ticking = false;
+        window.addEventListener('scroll', function() {
+            if (ticking) return;
+            ticking = true;
+            requestAnimationFrame(function() {
+                var y = window.scrollY;
+                var heroHeight = hero ? hero.offsetHeight : 800;
+                var progress = Math.min(y / heroHeight, 1);
+                var scale = 1 - progress * 0.06;
+                var translateZ = -progress * 120;
+                var opacity = 1 - progress * 0.5;
+                heroStage.style.transform = 'translateZ(' + translateZ + 'px) scale(' + scale + ')';
+                heroStage.style.opacity = Math.max(opacity, 0.35);
+                ticking = false;
+            });
+        }, { passive: true });
+    }
+
+    /* ========== Section depth-parallax: GitHub showcase + contact wrapper subtle float ========== */
+    var floatEls = document.querySelectorAll('.github-showcase-content, .contact-wrapper');
+    floatEls.forEach(function(el) {
+        if (isCoarsePointer) return;
+        var raf2 = null;
+        el.addEventListener('mousemove', function(e) {
+            var rect = el.getBoundingClientRect();
+            var x = (e.clientX - rect.left) / rect.width - 0.5;
+            var y = (e.clientY - rect.top) / rect.height - 0.5;
+            if (raf2) cancelAnimationFrame(raf2);
+            raf2 = requestAnimationFrame(function() {
+                el.style.transform = 'rotateX(' + (-y * 2.4) + 'deg) rotateY(' + (x * 2.4) + 'deg)';
+            });
+        });
+        el.addEventListener('mouseleave', function() {
+            if (raf2) cancelAnimationFrame(raf2);
+            el.style.transform = 'rotateX(0deg) rotateY(0deg)';
+        });
+    });
+
+    /* ========== Create Letterbox Elements if they don't exist ========== */
+    function createLetterboxElements() {
+        if (!document.getElementById('letterboxTop')) {
+            const top = document.createElement('div');
+            top.id = 'letterboxTop';
+            top.className = 'letterbox letterbox-top';
+            document.body.prepend(top);
+        }
+        if (!document.getElementById('letterboxBottom')) {
+            const bottom = document.createElement('div');
+            bottom.id = 'letterboxBottom';
+            bottom.className = 'letterbox letterbox-bottom';
+            document.body.appendChild(bottom);
+        }
+    }
+
+    // Add letterbox styles if they don't exist
+    function addLetterboxStyles() {
+        if (!document.getElementById('letterboxStyles')) {
+            const style = document.createElement('style');
+            style.id = 'letterboxStyles';
+            style.textContent = `
+                .letterbox {
+                    position: fixed;
+                    left: 0;
+                    right: 0;
+                    height: 10vh;
+                    background: #0a0808;
+                    z-index: 9999;
+                    transition: transform 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+                    pointer-events: none;
+                }
+                .letterbox-top {
+                    top: 0;
+                    transform: translateY(0);
+                }
+                .letterbox-bottom {
+                    bottom: 0;
+                    transform: translateY(0);
+                }
+                .letterbox-top.collapsed {
+                    transform: translateY(-100%);
+                }
+                .letterbox-bottom.collapsed {
+                    transform: translateY(100%);
+                }
+                /* Cinematic reveal animations */
+                .cine-reveal {
+                    opacity: 0;
+                    transform: translateY(40px) scale(0.98);
+                    transition: opacity 0.9s cubic-bezier(0.23, 1, 0.32, 1),
+                                transform 0.9s cubic-bezier(0.23, 1, 0.32, 1);
+                }
+                .cine-reveal.visible {
+                    opacity: 1;
+                    transform: translateY(0) scale(1);
+                }
+                .cine-reveal-left {
+                    opacity: 0;
+                    transform: translateX(-50px) scale(0.97);
+                    transition: opacity 0.9s cubic-bezier(0.23, 1, 0.32, 1),
+                                transform 0.9s cubic-bezier(0.23, 1, 0.32, 1);
+                }
+                .cine-reveal-left.visible {
+                    opacity: 1;
+                    transform: translateX(0) scale(1);
+                }
+                .cine-reveal-right {
+                    opacity: 0;
+                    transform: translateX(50px) scale(0.97);
+                    transition: opacity 0.9s cubic-bezier(0.23, 1, 0.32, 1),
+                                transform 0.9s cubic-bezier(0.23, 1, 0.32, 1);
+                }
+                .cine-reveal-right.visible {
+                    opacity: 1;
+                    transform: translateX(0) scale(1);
+                }
+                /* Hero stage for dolly effect */
+                .hero-stage {
+                    transition: opacity 0.1s linear;
+                    will-change: transform, opacity;
+                }
+                @media (max-width: 768px) {
+                    .letterbox {
+                        height: 5vh;
+                    }
+                    .cine-reveal {
+                        transform: translateY(25px) scale(0.98);
+                    }
+                    .cine-reveal.visible {
+                        transform: translateY(0) scale(1);
+                    }
+                    .cine-reveal-left {
+                        transform: translateX(-30px) scale(0.97);
+                    }
+                    .cine-reveal-left.visible {
+                        transform: translateX(0) scale(1);
+                    }
+                    .cine-reveal-right {
+                        transform: translateX(30px) scale(0.97);
+                    }
+                    .cine-reveal-right.visible {
+                        transform: translateX(0) scale(1);
+                    }
+                }
+                @media (prefers-reduced-motion: reduce) {
+                    .letterbox {
+                        transition: none;
+                    }
+                    .letterbox-top.collapsed,
+                    .letterbox-bottom.collapsed {
+                        display: none;
+                    }
+                    .cine-reveal,
+                    .cine-reveal-left,
+                    .cine-reveal-right {
+                        opacity: 1 !important;
+                        transform: none !important;
+                        transition: none !important;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+    }
+
+    // Initialize letterbox elements and styles
+    if (!prefersReduced) {
+        createLetterboxElements();
+        addLetterboxStyles();
+    }
+
+})();
+
+// ============================================================
+// CINEMATIC 3D STARFIELD BACKGROUND
+// Canvas-based depth-parallax stars + floating geometric
+// shapes (triangles, rings, diamonds). Mouse + scroll driven.
+// Requires: <canvas id="cinematicBg"></canvas> right after <body>
+// ============================================================
+(function() {
+    'use strict';
+
+    function init() {
+        var canvas = document.getElementById('cinematicBg');
+        if (!canvas) return;
+        var ctx = canvas.getContext('2d');
+        var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        var width, height, stars = [], shapes = [];
+        var mouseX = 0.5, mouseY = 0.5, scrollY = 0;
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+        resize();
+        window.addEventListener('resize', resize);
+
+        // Starfield: depth-layered points
+        var STAR_COUNT = window.innerWidth < 768 ? 90 : 180;
+        for (var i = 0; i < STAR_COUNT; i++) {
+            stars.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                z: Math.random() * 0.8 + 0.2, // depth factor (parallax strength)
+                r: Math.random() * 1.4 + 0.3,
+                tw: Math.random() * Math.PI * 2 // twinkle phase
+            });
+        }
+
+        // Floating geometric shapes (triangles, rings, diamonds)
+        var SHAPE_COUNT = window.innerWidth < 768 ? 4 : 8;
+        var shapeTypes = ['triangle', 'ring', 'diamond'];
+        for (var s = 0; s < SHAPE_COUNT; s++) {
+            shapes.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                size: Math.random() * 26 + 14,
+                z: Math.random() * 0.6 + 0.3,
+                rot: Math.random() * Math.PI * 2,
+                rotSpeed: (Math.random() - 0.5) * 0.004,
+                type: shapeTypes[Math.floor(Math.random() * shapeTypes.length)],
+                floatPhase: Math.random() * Math.PI * 2,
+                floatSpeed: Math.random() * 0.0008 + 0.0004
+            });
+        }
+
+        function drawShape(sh, t) {
+            var floatY = Math.sin(t * sh.floatSpeed + sh.floatPhase) * 18;
+            var px = sh.x + (mouseX - 0.5) * 40 * sh.z + (scrollY * 0.05 * sh.z);
+            var py = sh.y + (mouseY - 0.5) * 40 * sh.z + floatY;
+
+            ctx.save();
+            ctx.translate(px, py);
+            ctx.rotate(sh.rot);
+            ctx.strokeStyle = 'rgba(255, 77, 48, ' + (0.25 * sh.z) + ')';
+            ctx.lineWidth = 1.2;
+
+            if (sh.type === 'triangle') {
+                ctx.beginPath();
+                for (var i = 0; i < 3; i++) {
+                    var a = (Math.PI * 2 / 3) * i - Math.PI / 2;
+                    var px2 = Math.cos(a) * sh.size, py2 = Math.sin(a) * sh.size;
+                    if (i === 0) ctx.moveTo(px2, py2); else ctx.lineTo(px2, py2);
+                }
+                ctx.closePath();
+                ctx.stroke();
+            } else if (sh.type === 'ring') {
+                ctx.beginPath();
+                ctx.arc(0, 0, sh.size * 0.5, 0, Math.PI * 2);
+                ctx.stroke();
+            } else if (sh.type === 'diamond') {
+                ctx.beginPath();
+                ctx.moveTo(0, -sh.size * 0.5);
+                ctx.lineTo(sh.size * 0.5, 0);
+                ctx.lineTo(0, sh.size * 0.5);
+                ctx.lineTo(-sh.size * 0.5, 0);
+                ctx.closePath();
+                ctx.stroke();
+            }
+            ctx.restore();
+
+            sh.rot += sh.rotSpeed;
+        }
+
+        function animate(t) {
+            ctx.clearRect(0, 0, width, height);
+
+            // Stars with twinkle + subtle parallax
+            for (var i = 0; i < stars.length; i++) {
+                var st = stars[i];
+                var twinkle = 0.5 + 0.5 * Math.sin(t * 0.0015 + st.tw);
+                var px = st.x + (mouseX - 0.5) * 60 * st.z + (scrollY * 0.08 * st.z);
+                var py = st.y + (mouseY - 0.5) * 60 * st.z;
+
+                // wrap vertically with scroll for infinite feel
+                var wrappedY = ((py % height) + height) % height;
+
+                ctx.beginPath();
+                ctx.arc(px, wrappedY, st.r, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(255, 244, 230, ' + (0.15 + twinkle * 0.55) + ')';
+                ctx.fill();
+            }
+
+            // Floating geometric shapes
+            for (var j = 0; j < shapes.length; j++) {
+                drawShape(shapes[j], t);
+            }
+
+            if (!prefersReduced) requestAnimationFrame(animate);
+        }
+
+        if (!prefersReduced) {
+            requestAnimationFrame(animate);
+
+            document.addEventListener('mousemove', function(e) {
+                mouseX = e.clientX / width;
+                mouseY = e.clientY / height;
+            });
+
+            window.addEventListener('scroll', function() {
+                scrollY = window.scrollY;
+            }, { passive: true });
+        } else {
+            // Static single frame for reduced-motion users
+            animate(0);
+        }
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+})();
 
 // ============================================================
 // CURSOR SPOTLIGHT - Interactive Glow
@@ -452,8 +906,8 @@ document.addEventListener('DOMContentLoaded', () => {
 // ============================================================
 // CONSOLE LOG - Professional Branding
 // ============================================================
-console.log('%c🔥 Sake Nikhitha · Portfolio', 'font-size: 20px; font-weight: bold; color: #ff4d30;');
+console.log('%c🎬 Sake Nikhitha · Cinematic Portfolio', 'font-size: 20px; font-weight: bold; color: #ff4d30;');
 console.log('%c📧 sakenikhitha102@gmail.com', 'font-size: 14px; color: #6b5f55;');
 console.log('%c🔗 linkedin.com/in/nikhitha-sake', 'font-size: 14px; color: #6b5f55;');
 console.log('%c🐙 github.com/fabpot-glitch', 'font-size: 14px; color: #6b5f55;');
-console.log('%c✨ Built with ❤️ using HTML, CSS & JavaScript', 'font-size: 12px; color: #999;');
+console.log('%c✨ Built with ❤️ · HTML · CSS · JavaScript · Cinematic 3D', 'font-size: 12px; color: #999;');

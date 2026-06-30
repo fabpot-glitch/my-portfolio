@@ -119,17 +119,17 @@ body::before {
 
 /* Stagger delays for grid children */
 .stagger-1 { transition-delay: 0.05s; }
-.stagger-2 { transition-delay: 0.12s; }
-.stagger-3 { transition-delay: 0.19s; }
-.stagger-4 { transition-delay: 0.26s; }
-.stagger-5 { transition-delay: 0.33s; }
-.stagger-6 { transition-delay: 0.40s; }
-.stagger-7 { transition-delay: 0.47s; }
-.stagger-8 { transition-delay: 0.54s; }
-.stagger-9 { transition-delay: 0.61s; }
-.stagger-10 { transition-delay: 0.68s; }
-.stagger-11 { transition-delay: 0.75s; }
-.stagger-12 { transition-delay: 0.82s; }
+.stagger-2 { transition-delay: 0.10s; }
+.stagger-3 { transition-delay: 0.15s; }
+.stagger-4 { transition-delay: 0.20s; }
+.stagger-5 { transition-delay: 0.25s; }
+.stagger-6 { transition-delay: 0.30s; }
+.stagger-7 { transition-delay: 0.35s; }
+.stagger-8 { transition-delay: 0.40s; }
+.stagger-9 { transition-delay: 0.45s; }
+.stagger-10 { transition-delay: 0.50s; }
+.stagger-11 { transition-delay: 0.55s; }
+.stagger-12 { transition-delay: 0.60s; }
 
 /* ============================================================
    LOADER - Premium
@@ -702,20 +702,20 @@ body::before {
 
 .stat-number {
     font-family: var(--font-serif);
-    font-size: 1.6rem;
-    font-weight: 700;
+    font-size: 1.8rem;
+    font-weight: 800;
     color: var(--dark);
     line-height: 1;
 }
 
 .stat-label {
-    font-size: 0.65rem;
-    font-weight: 500;
+    font-size: 0.7rem;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: var(--text-light);
-    margin-top: 2px;
-    opacity: 0.5;
+    letter-spacing: 0.05em;
+    color: var(--text);
+    margin-top: 4px;
+    opacity: 0.85;
 }
 
 /* ===== PORTRAIT ===== */
@@ -924,7 +924,7 @@ body::before {
 }
 
 /* ============================================================
-   SKILLS - Premium  ← FIXED: all cards get orange top border
+   SKILLS - Premium WITH ORANGE TOP BORDER ON ALL CARDS
    ============================================================ */
 .skills-section {
     padding: 80px 0;
@@ -1614,7 +1614,7 @@ body::before {
 .github-stat .stat-number {
     font-family: var(--font-serif);
     font-size: 2rem;
-    font-weight: 700;
+    font-weight: 800;
     color: var(--accent);
     line-height: 1.2;
     letter-spacing: -0.02em;
@@ -1624,17 +1624,17 @@ body::before {
 .github-stat:hover .stat-number { color: var(--accent-dark); transform: scale(1.05); }
 
 .github-stat .stat-label {
-    font-size: 0.6rem;
-    font-weight: 600;
+    font-size: 0.65rem;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: var(--text-light);
-    opacity: 0.5;
-    margin-top: 0.2rem;
+    color: var(--text);
+    opacity: 0.8;
+    margin-top: 0.3rem;
     transition: opacity 0.3s ease;
 }
 
-.github-stat:hover .stat-label { opacity: 0.8; }
+.github-stat:hover .stat-label { opacity: 1; }
 
 .github-actions {
     display: flex;
@@ -2146,10 +2146,10 @@ body::before {
 .contact-left { display: flex; flex-direction: column; gap: 2rem; }
 
 .contact-intro {
-    font-size: 0.95rem;
+    font-size: 1.05rem;
     line-height: 1.8;
     color: #4a3f38;
-    font-weight: 400;
+    font-weight: 450;
     opacity: 0;
     animation: fadeUp 0.8s ease forwards;
     animation-delay: 0.4s;
@@ -2187,7 +2187,7 @@ body::before {
 
 .contact-cards {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 0.8rem;
     opacity: 0;
     animation: fadeUp 0.8s ease forwards;
@@ -2198,7 +2198,7 @@ body::before {
     background: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(12px);
     border-radius: 16px;
-    padding: 1rem 1rem 0.8rem;
+    padding: 1.2rem 1.2rem 1rem;
     border: 1px solid rgba(255, 255, 255, 0.15);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
     transition: all 0.4s var(--transition-smooth);
@@ -2206,7 +2206,7 @@ body::before {
     color: var(--dark);
     display: flex;
     align-items: center;
-    gap: 0.7rem;
+    gap: 0.9rem;
     position: relative;
     overflow: hidden;
     cursor: pointer;
@@ -2239,14 +2239,14 @@ body::before {
     animation: borderGlow 3s ease infinite;
 }
 
-.contact-card .icon { font-size: 1.3rem; flex-shrink: 0; transition: transform 0.4s var(--transition-smooth); }
+.contact-card .icon { font-size: 1.7rem; flex-shrink: 0; transition: transform 0.4s var(--transition-smooth); }
 .contact-card:hover .icon { transform: rotate(-6deg) scale(1.1); }
 
 .contact-card .info { display: flex; flex-direction: column; min-width: 0; flex: 1; }
 
-.contact-card .label { font-size: 0.45rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-light); opacity: 0.4; }
-.contact-card .value { font-size: 0.72rem; font-weight: 500; color: var(--dark); word-break: break-all; line-height: 1.3; }
-.contact-card .value.email { font-size: 0.62rem; }
+.contact-card .label { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-light); opacity: 0.65; }
+.contact-card .value { font-size: 0.92rem; font-weight: 600; color: var(--dark); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; line-height: 1.35; }
+.contact-card .value.email { font-size: 0.72rem; }
 
 .contact-card .copy-feedback {
     position: absolute;
@@ -2273,7 +2273,7 @@ body::before {
 }
 
 .social-btn {
-    width: 48px; height: 48px;
+    width: 56px; height: 56px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(12px);
@@ -2283,7 +2283,7 @@ body::before {
     justify-content: center;
     text-decoration: none;
     color: var(--dark);
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     transition: all 0.4s var(--transition-smooth);
     position: relative;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
@@ -2543,7 +2543,7 @@ body::before {
     .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
     .contact-left { order: 1; }
     .contact-right { order: 2; }
-    .contact-cards { grid-template-columns: 1fr 1fr; }
+    .contact-cards { grid-template-columns: 1fr; }
     .contact-wrapper { padding: 2rem 1.5rem 2.5rem; border-radius: 24px; }
     .contact-section .orb-1, .contact-section .orb-2 { width: 250px; height: 250px; }
     .contact-section .orb-3 { width: 150px; height: 150px; }
@@ -2573,7 +2573,7 @@ body::before {
     .hero-subtitle { font-size: 0.9rem; justify-content: center; }
     .hero-summary { font-size: 0.9rem; }
     .hero-stats { gap: 20px; flex-wrap: wrap; }
-    .stat-number { font-size: 1.3rem; }
+    .stat-number { font-size: 1.4rem; }
     .hero-visual { min-height: 300px; }
     .portrait-wrapper { max-width: 220px; }
     .portrait-frame { max-width: 200px; }
@@ -2601,7 +2601,7 @@ body::before {
     .github-stats { grid-template-columns: repeat(3, 1fr); gap: 0.5rem; padding: 0.6rem 0; }
     .github-stat { padding: 0.5rem 0.2rem; border-radius: 12px; }
     .github-stat .stat-number { font-size: 1.2rem; }
-    .github-stat .stat-label { font-size: 0.45rem; letter-spacing: 0.04em; }
+    .github-stat .stat-label { font-size: 0.5rem; letter-spacing: 0.04em; }
     .btn-github-main { font-size: 0.75rem; padding: 12px 24px; }
     .availability-badge-github { font-size: 0.55rem; padding: 0.3rem 1rem; }
     .github-message { font-size: 0.75rem !important; padding-left: 0.8rem; border-left-width: 3px; }
@@ -2628,7 +2628,7 @@ body::before {
     .contact-section .orb-3 { display: none; }
     .contact-title { font-size: 2.2rem; }
     .contact-subtitle { font-size: 0.9rem; }
-    .contact-cards { grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+    .contact-cards { grid-template-columns: 1fr; gap: 0.6rem; }
     .contact-card { padding: 0.8rem 0.8rem 0.6rem; border-radius: 14px; }
     .contact-card .icon { font-size: 1.1rem; }
     .contact-card .value { font-size: 0.65rem; }
@@ -2658,8 +2658,8 @@ body::before {
     .github-stats { grid-template-columns: repeat(3, 1fr); gap: 0.3rem; }
     .github-stat { padding: 0.3rem 0.1rem; border-radius: 10px; }
     .github-stat .stat-number { font-size: 1rem; }
-    .github-stat .stat-label { font-size: 0.4rem; }
-    .contact-cards { grid-template-columns: 1fr 1fr; gap: 0.4rem; }
+    .github-stat .stat-label { font-size: 0.45rem; }
+    .contact-cards { grid-template-columns: 1fr; gap: 0.4rem; }
     .contact-card { padding: 0.6rem 0.6rem 0.5rem; border-radius: 12px; }
     .contact-card .icon { font-size: 0.9rem; }
     .contact-card .value { font-size: 0.6rem; }

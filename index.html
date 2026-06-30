@@ -17,9 +17,47 @@
             visibility: visible !important;
             top: 0 !important;
         }
+        /* ===== INTRO VIDEO (hero) ===== */
+        .portrait-frame {
+            cursor: pointer;
+        }
+        .portrait-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            background: #000;
+        }
+        .video-sound-toggle {
+            position: absolute;
+            bottom: 60px;
+            right: 8%;
+            z-index: 4;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(26, 22, 20, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+        .video-sound-toggle:hover {
+            background: var(--accent);
+            transform: scale(1.08);
+        }
+        .video-sound-toggle svg { width: 18px; height: 18px; }
     </style>
 </head>
 <body>
+
+    <!-- ====== CINEMATIC LETTERBOX BARS ====== -->
+    <div class="letterbox letterbox-top" id="letterboxTop"></div>
+    <div class="letterbox letterbox-bottom" id="letterboxBottom"></div>
 
     <!-- ====== CURSOR SPOTLIGHT ====== -->
     <div class="cursor-spotlight" id="cursorSpotlight"></div>
@@ -55,6 +93,7 @@
 
     <!-- ====== HERO ====== -->
     <header class="hero" id="hero">
+        <div class="hero-stage">
         <div class="hero-grid">
             <div class="hero-text">
                 <div class="hero-badge">
@@ -91,36 +130,46 @@
                 </div>
             </div>
 
-            <div class="hero-visual">
-                <div class="portrait-wrapper">
-                    <div class="portrait-frame">
-                        <img
-                        src="https://i.ibb.co/ccVqyYqr/My-professional-photo.jpg"
-                        alt="Sake Nikhitha - Professional Portrait"
-                        class="portrait-img"
-                        />
+            <div class="hero-visual" id="heroVisual">
+                <div class="portrait-wrapper" id="portraitWrapper">
+                    <div class="portrait-frame" id="introVideoFrame">
+                        <video
+                            class="portrait-video"
+                            id="introVideo"
+                            src="public/assets/videos/ai-intro.mp4"
+                            autoplay
+                            muted
+                            loop
+                            playsinline
+                            preload="auto"
+                        ></video>
                         <div class="portrait-overlay">
                             <div class="portrait-glow"></div>
                         </div>
                     </div>
+                    <button class="video-sound-toggle" id="soundToggle" aria-label="Toggle sound">
+                        <svg id="soundIconOff" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+                        <svg id="soundIconOn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 010 7.07"/><path d="M19.07 4.93a10 10 0 010 14.14"/></svg>
+                    </button>
                     <div class="portrait-tagline">
                         <span>ML Engineer · Full-Stack</span>
                         <span class="tagline-year">2026</span>
                     </div>
                 </div>
-                <div class="floating-badge badge-1">
+                <div class="floating-badge badge-1" data-depth="0.06">
                     <span class="badge-icon">📚</span>
                     <span>Consistent Learner</span>
                 </div>
-                <div class="floating-badge badge-2">
+                <div class="floating-badge badge-2" data-depth="0.1">
                     <span class="badge-icon">🧠</span>
                     <span>Growth Mindset</span>
                 </div>
-                <div class="floating-badge badge-3">
+                <div class="floating-badge badge-3" data-depth="0.08">
                     <span class="badge-icon">💡</span>
                     <span>Innovation Driven</span>
                 </div>
             </div>
+        </div>
         </div>
 
         <!-- MARQUEE -->
@@ -164,22 +213,22 @@
                 <p class="value-subtitle">A blend of technical expertise and a relentless drive to build impactful solutions</p>
             </div>
             <div class="value-grid">
-                <div class="value-card">
+                <div class="value-card tilt-card">
                     <div class="value-icon">🎯</div>
                     <h3>Full-Stack Development</h3>
                     <p>End-to-end applications from React frontends to FastAPI backends with MongoDB &amp; MySQL.</p>
                 </div>
-                <div class="value-card">
+                <div class="value-card tilt-card">
                     <div class="value-icon">🤖</div>
                     <h3>Machine Learning Engineering</h3>
                     <p>Production-grade ML models with 90%+ accuracy using Scikit-learn, TensorFlow &amp; Hugging Face.</p>
                 </div>
-                <div class="value-card">
+                <div class="value-card tilt-card">
                     <div class="value-icon">⚡</div>
                     <h3>Scalable Architecture</h3>
                     <p>REST APIs and microservices with FastAPI, Flask, and Node.js for robust backend solutions.</p>
                 </div>
-                <div class="value-card">
+                <div class="value-card tilt-card">
                     <div class="value-icon">🧠</div>
                     <h3>Continuous Learning</h3>
                     <p>Exploring emerging technologies and best practices to stay at the forefront of software development.</p>
@@ -197,31 +246,31 @@
                 <p class="skills-subtitle">Full-Stack · AI/ML · Cloud</p>
             </div>
             <div class="skills-grid">
-                <div class="skill-card highlight-fullstack">
+                <div class="skill-card highlight-fullstack tilt-card">
                     <div class="skill-icon">⌨️</div>
                     <h3>Languages</h3>
                     <p>Python · Java · JavaScript</p>
                     <span class="skill-badge">Full-Stack</span>
                 </div>
-                <div class="skill-card highlight-fullstack">
+                <div class="skill-card highlight-fullstack tilt-card">
                     <div class="skill-icon">🎨</div>
                     <h3>Frontend</h3>
                     <p>React.js · TypeScript · Bootstrap · HTML · CSS</p>
                     <span class="skill-badge">Full-Stack</span>
                 </div>
-                <div class="skill-card highlight-fullstack">
+                <div class="skill-card highlight-fullstack tilt-card">
                     <div class="skill-icon">⚙️</div>
                     <h3>Backend &amp; DB</h3>
                     <p>FastAPI · Flask · Node.js · MongoDB · MySQL</p>
                     <span class="skill-badge">Full-Stack</span>
                 </div>
-                <div class="skill-card">
+                <div class="skill-card tilt-card">
                     <div class="skill-icon">🧪</div>
                     <h3>AI / ML</h3>
                     <p>Scikit-learn · TensorFlow · Hugging Face · RAG · NLP</p>
                     <span class="skill-badge">AI/ML</span>
                 </div>
-                <div class="skill-card">
+                <div class="skill-card tilt-card">
                     <div class="skill-icon">☁️</div>
                     <h3>Tools &amp; Cloud</h3>
                     <p>GitHub · Vercel · Render · VS Code</p>
@@ -267,9 +316,9 @@
                         <h3>AI &amp; ML Intern</h3>
                         <p class="timeline-location">Virtual</p>
                         <ul>
-                            <li>Completed the <strong>Infosys Springboard 7.0 AI/ML Virtual Internship</strong>, mastering industry-standard workflows in Machine Learning, Data Analytics, and Predictive Modeling.</li>
-                            <li>Built practical expertise across the <strong>complete AI project lifecycle</strong>, from data preprocessing and feature engineering to model training, evaluation, and deployment concepts.</li>
-                            <li>Leveraged <strong>Python, Pandas, NumPy, and Scikit-learn</strong> to analyze datasets and develop data-driven solutions for real-world business challenges.</li>
+                            <li>Currently undertaking the <strong>Infosys Springboard 7.0 AI/ML Virtual Internship</strong>, gaining hands-on experience with industry-standard workflows in Machine Learning, Data Analytics, and Predictive Modeling.</li>
+                            <li>Developing practical expertise across the <strong>complete AI project lifecycle</strong>, including data preprocessing, feature engineering, model training, evaluation, and deployment concepts through project-based learning.</li>
+                            <li>Applying <strong>Python, Pandas, NumPy, and Scikit-learn</strong> to analyze datasets and build data-driven solutions while strengthening problem-solving and analytical skills.</li>
                         </ul>
                     </div>
                 </div>
@@ -290,7 +339,7 @@
 
         <div class="projects-grid">
             <!-- CodeQuest -->
-            <div class="project-card">
+            <div class="project-card tilt-card-deep">
                 <div class="project-image">
                     <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop" alt="CodeQuest" loading="lazy" />
                     <div class="project-image-overlay"></div>
@@ -322,7 +371,7 @@
             </div>
 
             <!-- MindGuard AI -->
-            <div class="project-card">
+            <div class="project-card tilt-card-deep">
                 <div class="project-image">
                     <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=400&fit=crop" alt="MindGuard AI" loading="lazy" />
                     <div class="project-image-overlay"></div>
@@ -352,7 +401,7 @@
             </div>
 
             <!-- DocuMind AI -->
-            <div class="project-card">
+            <div class="project-card tilt-card-deep">
                 <div class="project-image">
                     <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=600&h=400&fit=crop" alt="DocuMind AI" loading="lazy" />
                     <div class="project-image-overlay"></div>
@@ -383,7 +432,7 @@
             </div>
 
             <!-- IPL Predictor -->
-            <div class="project-card">
+            <div class="project-card tilt-card-deep">
                 <div class="project-image">
                     <img src="https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=600&h=400&fit=crop" alt="IPL Predictor" loading="lazy" />
                     <div class="project-image-overlay"></div>
@@ -414,7 +463,7 @@
             </div>
 
             <!-- Email Spam Detector -->
-            <div class="project-card">
+            <div class="project-card tilt-card-deep">
                 <div class="project-image">
                     <img src="https://img.freepik.com/free-vector/hacker-with-laptop_23-2147985342.jpg?w=600" alt="Email Spam Detector" loading="lazy" />
                     <div class="project-image-overlay"></div>
@@ -445,7 +494,7 @@
             </div>
 
             <!-- Diabetes Prediction System -->
-            <div class="project-card">
+            <div class="project-card tilt-card-deep">
                 <div class="project-image">
                     <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=600&h=400&fit=crop" alt="Diabetes Prediction" loading="lazy" />
                     <div class="project-image-overlay"></div>
@@ -476,7 +525,7 @@
             </div>
 
             <!-- Car Price Prediction -->
-            <div class="project-card">
+            <div class="project-card tilt-card-deep">
                 <div class="project-image">
                     <img src="https://images.unsplash.com/photo-1552519507-88aa2dfa9fdb?w=600&h=400&fit=crop" alt="Car Price Prediction" loading="lazy" />
                     <div class="project-image-overlay"></div>
@@ -507,7 +556,7 @@
             </div>
 
             <!-- AI-Assisted Journal System -->
-            <div class="project-card">
+            <div class="project-card tilt-card-deep">
                 <div class="project-image">
                     <img src="https://images.unsplash.com/photo-1517842645767-c639042777db?w=600&h=400&fit=crop" alt="AI Journal" loading="lazy" />
                     <div class="project-image-overlay"></div>
@@ -537,7 +586,7 @@
             </div>
 
             <!-- React Components Collection -->
-            <div class="project-card">
+            <div class="project-card tilt-card-deep">
                 <div class="project-image">
                     <img src="https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?w=600&h=400&fit=crop" alt="React Components" loading="lazy" />
                     <div class="project-image-overlay"></div>
@@ -568,7 +617,7 @@
             </div>
 
             <!-- React Interactions -->
-            <div class="project-card">
+            <div class="project-card tilt-card-deep">
                 <div class="project-image">
                     <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=600&h=400&fit=crop" alt="React Interactions" loading="lazy" />
                     <div class="project-image-overlay"></div>
@@ -597,7 +646,7 @@
             </div>
 
             <!-- Automation Use Case Analyzer -->
-            <div class="project-card">
+            <div class="project-card tilt-card-deep">
                 <div class="project-image">
                     <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=400&fit=crop" alt="Automation Analyzer" loading="lazy" />
                     <div class="project-image-overlay"></div>
@@ -626,7 +675,7 @@
             </div>
 
             <!-- Calendar View -->
-            <div class="project-card">
+            <div class="project-card tilt-card-deep">
                 <div class="project-image">
                     <img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=600&h=400&fit=crop" alt="Calendar View" loading="lazy" />
                     <div class="project-image-overlay"></div>
@@ -703,7 +752,7 @@
         </div>
     </section>
 
-    <!-- ====== ACHIEVEMENTS ====== -->
+    <!-- ====== ACHIEVEMENTS - UPDATED WITH GITHUB ACHIEVEMENTS ====== -->
     <section class="achievements-section" id="achievements">
         <div class="container">
             <div class="achievements-header">
@@ -711,25 +760,33 @@
                 <h2 class="section-title">Achievements &amp; Recognition</h2>
             </div>
             <div class="achievement-grid">
-                <div class="achievement-card">
+                <div class="achievement-card tilt-card">
                     <div class="achievement-icon">🏆</div>
                     <div class="achievement-number">#14,346</div>
                     <p>Among <strong>356,000+</strong> participants in NCAT All India Aptitude Test</p>
                 </div>
-                <div class="achievement-card">
+                <div class="achievement-card tilt-card">
                     <div class="achievement-icon">🎯</div>
                     <div class="achievement-number">Appreciation</div>
                     <p>Certificate at <strong>IIIT Sri City</strong> 60-hour Agentic AI Hackathon (100+ participants)</p>
                 </div>
-                <div class="achievement-card">
-                    <div class="achievement-icon">📦</div>
-                    <div class="achievement-number">100+</div>
-                    <p>GitHub commits · Active open-source contributor at <strong>github.com/fabpot-glitch</strong></p>
+                <div class="achievement-card tilt-card">
+                    <div class="achievement-icon">⚡</div>
+                    <div class="achievement-number">Quickdraw</div>
+                    <p>GitHub achievement for <strong>opening a pull request within 5 minutes</strong> of a repository being created</p>
+                    <div class="achievement-badge">
+                        <span class="badge-label">GitHub</span>
+                        <span class="badge-icon">🏅</span>
+                    </div>
                 </div>
-                <div class="achievement-card">
-                    <div class="achievement-icon">⭐</div>
-                    <div class="achievement-number">96%</div>
-                    <p>Score in Intermediate board examinations · Mentorship recognition</p>
+                <div class="achievement-card tilt-card">
+                    <div class="achievement-icon">🚀</div>
+                    <div class="achievement-number">YOLO</div>
+                    <p>GitHub achievement for <strong>merging a pull request without review</strong> — embracing risk and speed</p>
+                    <div class="achievement-badge">
+                        <span class="badge-label">GitHub</span>
+                        <span class="badge-icon">🏅</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -745,7 +802,7 @@
             </div>
             <div class="certifications-grid">
                 <!-- Pragati Path to Future -->
-                <div class="cert-card">
+                <div class="cert-card tilt-card">
                     <div class="cert-icon">🏅</div>
                     <div class="cert-content">
                         <h3>Pragati Path to Future</h3>
@@ -757,7 +814,7 @@
                 </div>
 
                 <!-- Agentica Hackathon -->
-                <div class="cert-card">
+                <div class="cert-card tilt-card">
                     <div class="cert-icon">🤖</div>
                     <div class="cert-content">
                         <h3>Agentica Hackathon</h3>
@@ -769,7 +826,7 @@
                 </div>
 
                 <!-- iAccelerate Women Hackathon -->
-                <div class="cert-card">
+                <div class="cert-card tilt-card">
                     <div class="cert-icon">💪</div>
                     <div class="cert-content">
                         <h3>iAccelerate Women Hackathon</h3>
@@ -781,7 +838,7 @@
                 </div>
 
                 <!-- Infosys Springboard AI Primer -->
-                <div class="cert-card">
+                <div class="cert-card tilt-card">
                     <div class="cert-icon">🎓</div>
                     <div class="cert-content">
                         <h3>Infosys Springboard · AI Primer</h3>
@@ -793,7 +850,7 @@
                 </div>
 
                 <!-- Anthropic AI Fluency Framework -->
-                <div class="cert-card">
+                <div class="cert-card tilt-card">
                     <div class="cert-icon">🔬</div>
                     <div class="cert-content">
                         <h3>Anthropic · AI Fluency Framework &amp; Foundations</h3>
@@ -805,7 +862,7 @@
                 </div>
 
                 <!-- Anthropic AI Fluency Nonprofits -->
-                <div class="cert-card">
+                <div class="cert-card tilt-card">
                     <div class="cert-icon">🤝</div>
                     <div class="cert-content">
                         <h3>Anthropic · AI Fluency for Nonprofits &amp; Educators</h3>
@@ -817,7 +874,7 @@
                 </div>
 
                 <!-- Anthropic Agent Skills -->
-                <div class="cert-card">
+                <div class="cert-card tilt-card">
                     <div class="cert-icon">⚙️</div>
                     <div class="cert-content">
                         <h3>Anthropic · Introduction to Agent Skills</h3>
@@ -829,7 +886,7 @@
                 </div>
 
                 <!-- Anthropic Building with Claude API -->
-                <div class="cert-card">
+                <div class="cert-card tilt-card">
                     <div class="cert-icon">🛠️</div>
                     <div class="cert-content">
                         <h3>Anthropic · Building with Claude API</h3>
@@ -841,7 +898,7 @@
                 </div>
 
                 <!-- Anthropic Claude with Google Vertex AI -->
-                <div class="cert-card">
+                <div class="cert-card tilt-card">
                     <div class="cert-icon">☁️</div>
                     <div class="cert-content">
                         <h3>Anthropic · Claude with Google Vertex AI</h3>
@@ -853,7 +910,7 @@
                 </div>
 
                 <!-- EY Forage Technology Risk -->
-                <div class="cert-card">
+                <div class="cert-card tilt-card">
                     <div class="cert-icon">📊</div>
                     <div class="cert-content">
                         <h3>EY Forage · Technology Risk</h3>
@@ -865,7 +922,7 @@
                 </div>
 
                 <!-- Internshala Full Stack Development -->
-                <div class="cert-card">
+                <div class="cert-card tilt-card">
                     <div class="cert-icon">💼</div>
                     <div class="cert-content">
                         <h3>Internshala · Full Stack Development Internship</h3>
@@ -887,13 +944,13 @@
                 <h2 class="section-title">Academic Background</h2>
             </div>
             <div class="education-grid">
-                <div class="edu-card">
+                <div class="edu-card tilt-card">
                     <div class="edu-icon">🎓</div>
                     <div class="edu-content">
                         <h3>Mohan Babu University</h3>
                         <p class="edu-degree">B.Tech in Computer Science &amp; Engineering</p>
                         <div class="edu-meta">
-                            <span class="edu-gpa">GPA: <strong>9.2/10</strong></span>
+                            <span class="edu-gpa">CGPA: <strong>9.2/10</strong></span>
                             <span class="edu-year">2023 - 2027</span>
                             <span class="edu-location">Tirupati, Andhra Pradesh</span>
                         </div>
@@ -903,7 +960,7 @@
                     </div>
                 </div>
 
-                <div class="edu-card">
+                <div class="edu-card tilt-card">
                     <div class="edu-icon">📐</div>
                     <div class="edu-content">
                         <h3>Sri Chaitanya Junior College</h3>
@@ -919,7 +976,7 @@
                     </div>
                 </div>
 
-                <div class="edu-card">
+                <div class="edu-card tilt-card">
                     <div class="edu-icon">🏫</div>
                     <div class="edu-content">
                         <h3>B.S.R Girls High School</h3>
@@ -938,9 +995,8 @@
         </div>
     </section>
 
-    <!-- ====== CONTACT SECTION - PREMIUM REDESIGN ====== -->
+    <!-- ====== CONTACT SECTION ====== -->
     <section class="contact-section" id="contact">
-        <!-- Animated Background Orbs -->
         <div class="bg-orbs">
             <div class="orb orb-1"></div>
             <div class="orb orb-2"></div>
@@ -949,7 +1005,6 @@
 
         <div class="container">
             <div class="contact-wrapper">
-                <!-- Header -->
                 <div class="contact-header">
                     <span class="badge-connect">
                         <span class="dot"></span>
@@ -961,23 +1016,18 @@
                     <p class="contact-subtitle">Have a question or want to work together? Reach out and let's make something amazing.</p>
                 </div>
 
-                <!-- Two-Column Grid -->
                 <div class="contact-grid">
-                    <!-- LEFT SIDE -->
                     <div class="contact-left">
                         <p class="contact-intro">
                             I'm always excited to discuss new opportunities, collaborate on interesting projects, or simply chat about the latest in tech. Whether you're a recruiter, fellow developer, or someone with a cool idea, I'd love to hear from you!
                         </p>
 
-                        <!-- Availability Badge -->
                         <div class="availability-badge">
                             <span class="pulse-dot"></span>
                             Open to Internships & Full-Time Opportunities
                         </div>
 
-                        <!-- Contact Cards - 2x2 Grid -->
                         <div class="contact-cards">
-                            <!-- Email -->
                             <a href="mailto:sakenikhitha102@gmail.com" class="contact-card" data-copy="sakenikhitha102@gmail.com">
                                 <span class="icon">📧</span>
                                 <div class="info">
@@ -987,7 +1037,6 @@
                                 <span class="copy-feedback">✓ Copied</span>
                             </a>
 
-                            <!-- Phone -->
                             <a href="tel:+919063982693" class="contact-card">
                                 <span class="icon">📱</span>
                                 <div class="info">
@@ -996,7 +1045,6 @@
                                 </div>
                             </a>
 
-                            <!-- LinkedIn -->
                             <a href="https://www.linkedin.com/in/nikhitha-sake-530449307" target="_blank" rel="noopener noreferrer" class="contact-card">
                                 <span class="icon">💼</span>
                                 <div class="info">
@@ -1005,7 +1053,6 @@
                                 </div>
                             </a>
 
-                            <!-- GitHub -->
                             <a href="https://github.com/fabpot-glitch" target="_blank" rel="noopener noreferrer" class="contact-card">
                                 <span class="icon">🖥</span>
                                 <div class="info">
@@ -1015,7 +1062,6 @@
                             </a>
                         </div>
 
-                        <!-- Social Links -->
                         <div class="social-links">
                             <a href="https://github.com/fabpot-glitch" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="GitHub">
                                 <svg viewBox="0 0 24 24" fill="currentColor">
@@ -1041,7 +1087,6 @@
                         </div>
                     </div>
 
-                    <!-- RIGHT SIDE - FORM -->
                     <div class="contact-right">
                         <div class="form-card">
                             <h3>Send a Message</h3>
@@ -1145,19 +1190,36 @@
     </footer>
 
     <script src="script.js"></script>
-    <!-- NAV ALWAYS VISIBLE: neutralise any scroll-hide logic from script.js -->
+    <script src="cinematic.js"></script>
     <script>
         (function () {
             var nav = document.getElementById('siteNav');
             if (!nav) return;
-            // Override any MutationObserver or style changes that hide the nav
-            var _setProperty = nav.style.setProperty.bind(nav.style);
-            // Re-apply visibility after every scroll event so script.js can't hide it
             window.addEventListener('scroll', function () {
                 nav.style.setProperty('transform', 'translateY(0)', 'important');
                 nav.style.setProperty('opacity', '1', 'important');
                 nav.style.setProperty('visibility', 'visible', 'important');
             }, { passive: true });
+        })();
+    </script>
+
+    <!-- ====== INTRO VIDEO SOUND TOGGLE ====== -->
+    <script>
+        (function () {
+            var video = document.getElementById('introVideo');
+            var toggle = document.getElementById('soundToggle');
+            var iconOff = document.getElementById('soundIconOff');
+            var iconOn = document.getElementById('soundIconOn');
+            if (!video || !toggle) return;
+
+            toggle.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                video.muted = !video.muted;
+                if (video.paused) video.play();
+                iconOff.style.display = video.muted ? 'block' : 'none';
+                iconOn.style.display = video.muted ? 'none' : 'block';
+            });
         })();
     </script>
 </body>
