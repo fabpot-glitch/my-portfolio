@@ -9,48 +9,247 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:opsz,wght@14..32,300..700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
-    <!-- NAV ALWAYS VISIBLE OVERRIDE -->
+    <!-- NAV ALWAYS VISIBLE OVERRIDE & INTRO VIDEO STYLES -->
     <style>
         .site-nav {
             transform: translateY(0) !important;
             opacity: 1 !important;
             visibility: visible !important;
             top: 0 !important;
+            z-index: 1000;
         }
-        /* ===== INTRO VIDEO (hero) ===== */
-        .portrait-frame {
+
+        /* ============================================================
+           INTRO VIDEO SECTION - FULL SCREEN COVER
+           ============================================================ */
+        #ai-intro {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            background: #0a0808;
             cursor: pointer;
         }
-        .portrait-video {
-            width: 100%;
-            height: 100%;
+
+        #ai-intro video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
             object-fit: cover;
             display: block;
-            background: #000;
         }
-        .video-sound-toggle {
+
+        #ai-intro .video-overlay {
             position: absolute;
-            bottom: 60px;
-            right: 8%;
-            z-index: 4;
-            width: 40px;
-            height: 40px;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.35);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.6s ease;
+            pointer-events: none;
+            z-index: 2;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        #ai-intro .video-overlay.hidden {
+            opacity: 0;
+        }
+
+        #ai-intro .play-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
             border-radius: 50%;
-            background: rgba(26, 22, 20, 0.85);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
+            border: 2px solid rgba(255, 255, 255, 0.12);
+            font-size: 2rem;
             color: #fff;
+            transition: all 0.4s ease;
+            margin-bottom: 20px;
+            pointer-events: none;
+            flex-shrink: 0;
+        }
+
+        #ai-intro .play-icon svg {
+            width: 36px;
+            height: 36px;
+            fill: #fff;
+        }
+
+        #ai-intro .video-title {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 0.02em;
+            text-shadow: 0 4px 40px rgba(0, 0, 0, 0.6);
+            pointer-events: none;
+            text-align: center;
+            padding: 0 1rem;
+            line-height: 1.1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        #ai-intro .video-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(1rem, 2vw, 1.6rem);
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-top: 8px;
+            pointer-events: none;
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        #ai-intro .video-controls {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            gap: 12px;
+            z-index: 5;
+        }
+
+        #ai-intro .video-controls button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
             transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
         }
-        .video-sound-toggle:hover {
-            background: var(--accent);
-            transform: scale(1.08);
+
+        #ai-intro .video-controls button:hover {
+            background: rgba(255, 77, 48, 0.3);
+            color: #fff;
+            border-color: rgba(255, 77, 48, 0.2);
+            transform: scale(1.05);
         }
-        .video-sound-toggle svg { width: 18px; height: 18px; }
+
+        .hero {
+            padding-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            #ai-intro .play-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+            #ai-intro .play-icon svg {
+                width: 28px;
+                height: 28px;
+            }
+            #ai-intro .video-controls {
+                bottom: 16px;
+                right: 16px;
+            }
+            #ai-intro .video-controls button {
+                width: 32px;
+                height: 32px;
+                font-size: 0.7rem;
+            }
+            #ai-intro .video-title {
+                font-size: 2rem;
+            }
+            #ai-intro .video-subtitle {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #ai-intro .video-title {
+                font-size: 1.6rem;
+            }
+            #ai-intro .play-icon {
+                width: 50px;
+                height: 50px;
+                margin-bottom: 12px;
+            }
+            #ai-intro .play-icon svg {
+                width: 22px;
+                height: 22px;
+            }
+            #ai-intro .video-subtitle {
+                font-size: 0.7rem;
+                letter-spacing: 0.1em;
+            }
+        }
+
+        /* ============================================================
+           BRIGHTEN HERO PORTRAIT + FIX INTRO VIDEO HEAD CROP
+           ============================================================ */
+        .hero-visual,
+        .portrait-wrapper,
+        .portrait-frame {
+            background: transparent !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+        }
+
+        .portrait-img {
+            filter: brightness(1.15) saturate(1.3) contrast(1.05) !important;
+            -webkit-filter: brightness(1.15) saturate(1.3) contrast(1.05) !important;
+            opacity: 1 !important;
+            mix-blend-mode: normal !important;
+        }
+
+        .portrait-overlay {
+            background: transparent !important;
+            mix-blend-mode: normal !important;
+            opacity: 0 !important;
+            display: none !important;
+        }
+
+        .portrait-overlay .portrait-glow {
+            display: none !important;
+        }
+
+        #ai-intro video {
+            object-position: center 10% !important;
+            transform: translate(-50%, -42%) !important;
+        }
+
+        .portrait-frame::before,
+        .portrait-frame::after,
+        .portrait-wrapper::before,
+        .portrait-wrapper::after,
+        .hero-visual::before,
+        .hero-visual::after {
+            display: none !important;
+            content: none !important;
+            background: none !important;
+            opacity: 0 !important;
+        }
+
+        .portrait-frame {
+            box-shadow: none !important;
+        }
+
+        .portrait-frame img.portrait-img {
+            position: relative !important;
+            z-index: 1 !important;
+        }
     </style>
 </head>
 <body>
@@ -69,6 +268,31 @@
             <div class="loader-bar"><div class="loader-progress" id="loaderProgress"></div></div>
         </div>
     </div>
+
+    <!-- ====== AI INTRO VIDEO SECTION - FULL SCREEN FIRST SLIDE ====== -->
+    <section id="ai-intro">
+        <video id="introVideo" muted playsinline preload="auto" loop>
+            <source src="public/assets/videos/ai-intro.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <!-- Video Overlay -->
+        <div class="video-overlay" id="videoOverlay">
+            <div class="play-icon">
+                <svg viewBox="0 0 24 24">
+                    <polygon points="5,3 19,12 5,21" />
+                </svg>
+            </div>
+            <div class="video-title">Sake Nikhitha</div>
+            <div class="video-subtitle">AI · ML · Full-Stack Development</div>
+        </div>
+
+        <!-- Video Controls -->
+        <div class="video-controls">
+            <button class="mute-btn" id="muteBtn" aria-label="Toggle sound">🔇</button>
+            <button id="restartBtn" aria-label="Restart video">⟳</button>
+        </div>
+    </section>
 
     <!-- ====== NAV - PERMANENTLY VISIBLE ====== -->
     <nav class="site-nav" id="siteNav">
@@ -91,85 +315,76 @@
         </div>
     </nav>
 
-    <!-- ====== HERO ====== -->
+    <!-- ====== HERO - PREMIUM BRIGHT STYLING ====== -->
     <header class="hero" id="hero">
         <div class="hero-stage">
-        <div class="hero-grid">
-            <div class="hero-text">
-                <div class="hero-badge">
-                    <span class="badge-dot"></span>
-                    Open to Opportunities
+            <div class="hero-grid">
+                <div class="hero-text">
+                    <div class="hero-badge">
+                        <span class="badge-dot"></span>
+                        Open to Opportunities
+                    </div>
+                    <h1 class="hero-title">
+                        <span class="title-line">Sake</span>
+                        <span class="title-line accent">Nikhitha</span>
+                    </h1>
+                    <div class="hero-subtitle">
+                        <span>Aspiring Machine Learning Engineer</span>
+                        <span class="separator">·</span>
+                        <span>Full-Stack Developer</span>
+                    </div>
+                    <p class="hero-summary">
+                        I build intelligent applications at the intersection of AI and user-centric design — delivering clean, scalable solutions that solve real-world problems. From architecting robust backends with FastAPI and Node.js to crafting intuitive React frontends and deploying production-grade ML models, I bring a holistic approach to software development. Driven by curiosity and a commitment to excellence, I transform complex challenges into impactful, functional products.
+                    </p>
+                    <div class="hero-cta">
+                        <a href="#projects" class="btn-primary">
+                            <span>View My Work</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                        <a href="#contact" class="btn-secondary">Contact Me</a>
+                        <a id="heroDownloadBtn" href="Sake Nikhitha.pdf" download class="btn-download">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            <span>Download CV</span>
+                        </a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat"><span class="stat-number">4</span><span class="stat-label">Deployed Apps</span></div>
+                        <div class="stat"><span class="stat-number">100+</span><span class="stat-label">Commits</span></div>
+                        <div class="stat"><span class="stat-number">90%+</span><span class="stat-label">Model Accuracy</span></div>
+                    </div>
                 </div>
-                <h1 class="hero-title">
-                    <span class="title-line">Sake</span>
-                    <span class="title-line accent">Nikhitha</span>
-                </h1>
-                <div class="hero-subtitle">
-                    <span>Aspiring Machine Learning Engineer</span>
-                    <span class="separator">·</span>
-                    <span>Full-Stack Developer</span>
-                </div>
-                <p class="hero-summary">
-                    I build intelligent applications at the intersection of AI and user-centric design — delivering clean, scalable solutions that solve real-world problems. From architecting robust backends with FastAPI and Node.js to crafting intuitive React frontends and deploying production-grade ML models, I bring a holistic approach to software development. Driven by curiosity and a commitment to excellence, I transform complex challenges into impactful, functional products.
-                </p>
-                <div class="hero-cta">
-                    <a href="#projects" class="btn-primary">
-                        <span>View My Work</span>
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </a>
-                    <a href="#contact" class="btn-secondary">Contact Me</a>
-                    <a id="heroDownloadBtn" href="Sake Nikhitha.pdf" download class="btn-download">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                        <span>Download CV</span>
-                    </a>
-                </div>
-                <div class="hero-stats">
-                    <div class="stat"><span class="stat-number">4</span><span class="stat-label">Deployed Apps</span></div>
-                    <div class="stat"><span class="stat-number">100+</span><span class="stat-label">Commits</span></div>
-                    <div class="stat"><span class="stat-number">90%+</span><span class="stat-label">Model Accuracy</span></div>
-                </div>
-            </div>
 
-            <div class="hero-visual" id="heroVisual">
-                <div class="portrait-wrapper" id="portraitWrapper">
-                    <div class="portrait-frame" id="introVideoFrame">
-                        <video
-                            class="portrait-video"
-                            id="introVideo"
-                            src="public/assets/videos/ai-intro.mp4"
-                            autoplay
-                            muted
-                            loop
-                            playsinline
-                            preload="auto"
-                        ></video>
-                        <div class="portrait-overlay">
-                            <div class="portrait-glow"></div>
+                <div class="hero-visual" id="heroVisual">
+                    <div class="portrait-wrapper" id="portraitWrapper">
+                        <div class="portrait-frame">
+                            <img
+                                src="https://i.ibb.co/ccVqyYqr/My-professional-photo.jpg"
+                                alt="Sake Nikhitha - Professional Portrait"
+                                class="portrait-img"
+                            />
+                            <div class="portrait-overlay">
+                                <div class="portrait-glow"></div>
+                            </div>
+                        </div>
+                        <div class="portrait-tagline">
+                            <span>ML Engineer · Full-Stack</span>
+                            <span class="tagline-year">2026</span>
                         </div>
                     </div>
-                    <button class="video-sound-toggle" id="soundToggle" aria-label="Toggle sound">
-                        <svg id="soundIconOff" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
-                        <svg id="soundIconOn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 010 7.07"/><path d="M19.07 4.93a10 10 0 010 14.14"/></svg>
-                    </button>
-                    <div class="portrait-tagline">
-                        <span>ML Engineer · Full-Stack</span>
-                        <span class="tagline-year">2026</span>
+                    <div class="floating-badge badge-1" data-depth="0.06">
+                        <span class="badge-icon">📚</span>
+                        <span>Consistent Learner</span>
+                    </div>
+                    <div class="floating-badge badge-2" data-depth="0.1">
+                        <span class="badge-icon">🧠</span>
+                        <span>Growth Mindset</span>
+                    </div>
+                    <div class="floating-badge badge-3" data-depth="0.08">
+                        <span class="badge-icon">💡</span>
+                        <span>Innovation Driven</span>
                     </div>
                 </div>
-                <div class="floating-badge badge-1" data-depth="0.06">
-                    <span class="badge-icon">📚</span>
-                    <span>Consistent Learner</span>
-                </div>
-                <div class="floating-badge badge-2" data-depth="0.1">
-                    <span class="badge-icon">🧠</span>
-                    <span>Growth Mindset</span>
-                </div>
-                <div class="floating-badge badge-3" data-depth="0.08">
-                    <span class="badge-icon">💡</span>
-                    <span>Innovation Driven</span>
-                </div>
             </div>
-        </div>
         </div>
 
         <!-- MARQUEE -->
@@ -752,7 +967,7 @@
         </div>
     </section>
 
-    <!-- ====== ACHIEVEMENTS - UPDATED WITH GITHUB ACHIEVEMENTS ====== -->
+    <!-- ====== ACHIEVEMENTS ====== -->
     <section class="achievements-section" id="achievements">
         <div class="container">
             <div class="achievements-header">
@@ -1192,34 +1407,97 @@
     <script src="script.js"></script>
     <script src="cinematic.js"></script>
     <script>
-        (function () {
+        (function() {
             var nav = document.getElementById('siteNav');
             if (!nav) return;
-            window.addEventListener('scroll', function () {
+            window.addEventListener('scroll', function() {
                 nav.style.setProperty('transform', 'translateY(0)', 'important');
                 nav.style.setProperty('opacity', '1', 'important');
                 nav.style.setProperty('visibility', 'visible', 'important');
             }, { passive: true });
         })();
-    </script>
 
-    <!-- ====== INTRO VIDEO SOUND TOGGLE ====== -->
-    <script>
-        (function () {
+        // ============================================================
+        // INTRO VIDEO - Interactive Controls
+        // ============================================================
+        (function() {
             var video = document.getElementById('introVideo');
-            var toggle = document.getElementById('soundToggle');
-            var iconOff = document.getElementById('soundIconOff');
-            var iconOn = document.getElementById('soundIconOn');
-            if (!video || !toggle) return;
+            var overlay = document.getElementById('videoOverlay');
+            var muteBtn = document.getElementById('muteBtn');
+            var restartBtn = document.getElementById('restartBtn');
+            var section = document.getElementById('ai-intro');
 
-            toggle.addEventListener('click', function (e) {
-                e.preventDefault();
-                e.stopPropagation();
-                video.muted = !video.muted;
-                if (video.paused) video.play();
-                iconOff.style.display = video.muted ? 'block' : 'none';
-                iconOn.style.display = video.muted ? 'none' : 'block';
+            if (!video || !overlay) return;
+
+            // Play/pause on click
+            section.addEventListener('click', function(e) {
+                // Don't trigger if clicking on controls
+                if (e.target.closest('.video-controls')) return;
+
+                if (video.paused) {
+                    video.play();
+                    overlay.classList.add('hidden');
+                } else {
+                    video.pause();
+                    overlay.classList.remove('hidden');
+                }
             });
+
+            // Mute toggle
+            if (muteBtn) {
+                muteBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    video.muted = !video.muted;
+                    this.textContent = video.muted ? '🔇' : '🔊';
+                });
+            }
+
+            // Restart video
+            if (restartBtn) {
+                restartBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    video.currentTime = 0;
+                    video.play();
+                    overlay.classList.add('hidden');
+                });
+            }
+
+            // Show overlay when video ends
+            video.addEventListener('ended', function() {
+                overlay.classList.remove('hidden');
+            });
+
+            // Hide overlay when video starts playing
+            video.addEventListener('play', function() {
+                overlay.classList.add('hidden');
+            });
+
+            // Show overlay when video pauses
+            video.addEventListener('pause', function() {
+                overlay.classList.remove('hidden');
+            });
+
+            // Auto-play video when page loads with slight delay
+            window.addEventListener('load', function() {
+                setTimeout(function() {
+                    // Try to play, but if autoplay is blocked, show overlay
+                    var playPromise = video.play();
+                    if (playPromise !== undefined) {
+                        playPromise.then(function() {
+                            overlay.classList.add('hidden');
+                        }).catch(function() {
+                            overlay.classList.remove('hidden');
+                            video.muted = true;
+                            if (muteBtn) muteBtn.textContent = '🔇';
+                            // Try again with muted
+                            video.play().then(function() {
+                                overlay.classList.add('hidden');
+                            }).catch(function() {});
+                        });
+                    }
+                }, 800);
+            });
+
         })();
     </script>
 </body>
