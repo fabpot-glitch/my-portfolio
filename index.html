@@ -9,7 +9,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:opsz,wght@14..32,300..700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
-    <!-- NAV ALWAYS VISIBLE OVERRIDE & INTRO VIDEO STYLES -->
     <style>
         .site-nav {
             transform: translateY(0) !important;
@@ -19,9 +18,6 @@
             z-index: 1000;
         }
 
-        /* ============================================================
-           INTRO VIDEO SECTION - FULL SCREEN COVER
-           ============================================================ */
         #ai-intro {
             position: relative;
             width: 100vw;
@@ -196,9 +192,6 @@
             }
         }
 
-        /* ============================================================
-           BRIGHTEN HERO PORTRAIT + FIX INTRO VIDEO HEAD CROP
-           ============================================================ */
         .hero-visual,
         .portrait-wrapper,
         .portrait-frame {
@@ -250,6 +243,48 @@
             position: relative !important;
             z-index: 1 !important;
         }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        .cert-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 5px 18px;
+            font-size: 0.55rem;
+            font-weight: 600;
+            color: #ff4d30;
+            background: rgba(255, 77, 48, 0.04);
+            border: 1px solid rgba(255, 77, 48, 0.1);
+            border-radius: 40px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            letter-spacing: 0.03em;
+            width: fit-content;
+            cursor: pointer;
+        }
+
+        .cert-btn:hover {
+            background: #ff4d30;
+            color: #fff;
+            transform: translateX(6px);
+            box-shadow: 0 4px 15px rgba(255, 77, 48, 0.12);
+            border-color: #ff4d30;
+        }
+
+        .cert-btn.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .cert-btn.disabled:hover {
+            transform: none;
+            background: rgba(255, 77, 48, 0.04);
+            color: #ff4d30;
+            box-shadow: none;
+        }
     </style>
 </head>
 <body>
@@ -276,7 +311,6 @@
             Your browser does not support the video tag.
         </video>
 
-        <!-- Video Overlay -->
         <div class="video-overlay" id="videoOverlay">
             <div class="play-icon">
                 <svg viewBox="0 0 24 24">
@@ -287,7 +321,6 @@
             <div class="video-subtitle">AI · ML · Full-Stack Development</div>
         </div>
 
-        <!-- Video Controls -->
         <div class="video-controls">
             <button class="mute-btn" id="muteBtn" aria-label="Toggle sound">🔇</button>
             <button id="restartBtn" aria-label="Restart video">⟳</button>
@@ -315,7 +348,7 @@
         </div>
     </nav>
 
-    <!-- ====== HERO - PREMIUM BRIGHT STYLING ====== -->
+    <!-- ====== HERO ====== -->
     <header class="hero" id="hero">
         <div class="hero-stage">
             <div class="hero-grid">
@@ -357,11 +390,7 @@
                 <div class="hero-visual" id="heroVisual">
                     <div class="portrait-wrapper" id="portraitWrapper">
                         <div class="portrait-frame">
-                            <img
-                                src="https://i.ibb.co/ccVqyYqr/My-professional-photo.jpg"
-                                alt="Sake Nikhitha - Professional Portrait"
-                                class="portrait-img"
-                            />
+                            <img src="https://i.ibb.co/ccVqyYqr/My-professional-photo.jpg" alt="Sake Nikhitha - Professional Portrait" class="portrait-img" />
                             <div class="portrait-overlay">
                                 <div class="portrait-glow"></div>
                             </div>
@@ -387,7 +416,6 @@
             </div>
         </div>
 
-        <!-- MARQUEE -->
         <div class="marquee-wrap">
             <div class="marquee-track" id="marqueeTrack">
                 <span>Full-Stack Development</span><span>·</span>
@@ -402,7 +430,6 @@
                 <span>Flask</span><span>·</span>
                 <span>MySQL</span><span>·</span>
                 <span>Git</span><span>·</span>
-                <!-- Duplicate for seamless loop -->
                 <span>Full-Stack Development</span><span>·</span>
                 <span>FastAPI</span><span>·</span>
                 <span>React.js</span><span>·</span>
@@ -414,12 +441,12 @@
                 <span>Node.js</span><span>·</span>
                 <span>Flask</span><span>·</span>
                 <span>MySQL</span><span>·</span>
-                
+                <span>Git</span><span>·</span>
             </div>
         </div>
     </header>
 
-    <!-- ====== WHAT I BRING TO THE TABLE ====== -->
+    <!-- ====== VALUE SECTION ====== -->
     <section class="value-section" id="value">
         <div class="container">
             <div class="value-header">
@@ -470,7 +497,7 @@
                 <div class="skill-card highlight-fullstack tilt-card">
                     <div class="skill-icon">🎨</div>
                     <h3>Frontend</h3>
-                    <p>React.js · TypeScript ·  · HTML · CSS</p>
+                    <p>React.js · TypeScript · Bootstrap · HTML · CSS</p>
                     <span class="skill-badge">Full-Stack</span>
                 </div>
                 <div class="skill-card highlight-fullstack tilt-card">
@@ -503,7 +530,6 @@
                 <h2 class="section-title light">Professional Experience</h2>
             </div>
             <div class="timeline">
-
                 <div class="timeline-card">
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
@@ -516,7 +542,7 @@
                         <ul>
                             <li>Developed <strong>4 production-grade ML solutions</strong>: IPL Predictor, Diabetes Prediction, Car Price Regression, and Breast Cancer Classifier</li>
                             <li>Improved model accuracy by <strong>20%</strong> through Exploratory Data Analysis and feature engineering on <strong>500,000+</strong> data records</li>
-                            <li>Achieved <strong>over 90% accuracy</strong> across all 4 models, demonstrating robust predictive capabilities</li>
+                            <li>Achieved <strong>over 90% accuracy</strong> across all 4 models</li>
                         </ul>
                     </div>
                 </div>
@@ -531,19 +557,13 @@
                         <h3>AI &amp; ML Intern</h3>
                         <p class="timeline-location">Virtual</p>
                         <ul>
-                            <ul>
-    <li>Currently undertaking the <strong>Infosys Springboard 7.0 AI/ML Virtual Internship</strong>, gaining hands-on experience with industry-standard workflows in Machine Learning  and Predictive Modeling.</li>
-
-    <li>Developing practical expertise across the <strong>complete AI project lifecycle</strong>, including data preprocessing, feature engineering, model training, evaluation, and deployment concepts through project-based learning.</li>
-
-    <li>Applying <strong>Python, Pandas, NumPy, and Scikit-learn</strong> to analyze datasets and build data-driven solutions while strengthening problem-solving and analytical skills.</li>
-
-    <li>Currently developing an <strong>AI Support Ticket Management Agent</strong>, an intelligent system that automates ticket classification, prioritization, routing, and response generation using Machine Learning and Natural Language Processing (NLP) techniques to enhance customer support efficiency.</li>
-</ul>
+                            <li>Undertaking the <strong>Infosys Springboard 7.0 AI/ML Virtual Internship</strong> with hands-on experience in ML and Predictive Modeling</li>
+                            <li>Developing practical expertise across the <strong>complete AI project lifecycle</strong></li>
+                            <li>Applying <strong>Python, Pandas, NumPy, and Scikit-learn</strong> to analyze datasets</li>
+                            <li>Currently developing an <strong>AI Support Ticket Management Agent</strong> using ML and NLP</li>
                         </ul>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
@@ -559,7 +579,6 @@
         </div>
 
         <div class="projects-grid">
-            <!-- CodeQuest -->
             <div class="project-card tilt-card-deep">
                 <div class="project-image">
                     <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop" alt="CodeQuest" loading="lazy" />
@@ -591,7 +610,6 @@
                 </div>
             </div>
 
-            <!-- MindGuard AI -->
             <div class="project-card tilt-card-deep">
                 <div class="project-image">
                     <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=400&fit=crop" alt="MindGuard AI" loading="lazy" />
@@ -621,7 +639,6 @@
                 </div>
             </div>
 
-            <!-- DocuMind AI -->
             <div class="project-card tilt-card-deep">
                 <div class="project-image">
                     <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=600&h=400&fit=crop" alt="DocuMind AI" loading="lazy" />
@@ -652,7 +669,6 @@
                 </div>
             </div>
 
-            <!-- IPL Predictor -->
             <div class="project-card tilt-card-deep">
                 <div class="project-image">
                     <img src="https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=600&h=400&fit=crop" alt="IPL Predictor" loading="lazy" />
@@ -666,7 +682,7 @@
                     </div>
                     <div class="project-impact">
                         <span class="impact-label">⚡ Impact</span>
-                        <p>Empowers users with 90%+ accurate predictions, enhancing match viewing experience.</p>
+                        <p>Empowers users with 90%+ accurate predictions.</p>
                     </div>
                     <div class="project-stack">
                         <span>Python</span>
@@ -683,7 +699,6 @@
                 </div>
             </div>
 
-            <!-- Email Spam Detector -->
             <div class="project-card tilt-card-deep">
                 <div class="project-image">
                     <img src="https://img.freepik.com/free-vector/hacker-with-laptop_23-2147985342.jpg?w=600" alt="Email Spam Detector" loading="lazy" />
@@ -697,7 +712,7 @@
                     </div>
                     <div class="project-impact">
                         <span class="impact-label">⚡ Impact</span>
-                        <p>Protects users with 95%+ accurate spam detection, saving time and reducing security risks.</p>
+                        <p>Protects users with 95%+ accurate spam detection.</p>
                     </div>
                     <div class="project-stack">
                         <span>Python</span>
@@ -714,7 +729,6 @@
                 </div>
             </div>
 
-            <!-- Diabetes Prediction System -->
             <div class="project-card tilt-card-deep">
                 <div class="project-image">
                     <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=600&h=400&fit=crop" alt="Diabetes Prediction" loading="lazy" />
@@ -728,7 +742,7 @@
                     </div>
                     <div class="project-impact">
                         <span class="impact-label">⚡ Impact</span>
-                        <p>Enables early intervention through accurate prediction, improving patient outcomes.</p>
+                        <p>Enables early intervention through accurate prediction.</p>
                     </div>
                     <div class="project-stack">
                         <span>Python</span>
@@ -745,7 +759,6 @@
                 </div>
             </div>
 
-            <!-- Car Price Prediction -->
             <div class="project-card tilt-card-deep">
                 <div class="project-image">
                     <img src="https://images.unsplash.com/photo-1552519507-88aa2dfa9fdb?w=600&h=400&fit=crop" alt="Car Price Prediction" loading="lazy" />
@@ -755,11 +768,11 @@
                 <div class="project-card-content">
                     <h3 class="project-name">Car Price Prediction</h3>
                     <div class="project-desc">
-                        <p>ML-based used car price prediction tool for fair market valuation and informed decisions.</p>
+                        <p>ML-based used car price prediction tool for fair market valuation.</p>
                     </div>
                     <div class="project-impact">
                         <span class="impact-label">⚡ Impact</span>
-                        <p>Empowers users with 90%+ accurate price predictions for fair transactions.</p>
+                        <p>Empowers users with 90%+ accurate price predictions.</p>
                     </div>
                     <div class="project-stack">
                         <span>Python</span>
@@ -776,7 +789,6 @@
                 </div>
             </div>
 
-            <!-- AI-Assisted Journal System -->
             <div class="project-card tilt-card-deep">
                 <div class="project-image">
                     <img src="https://images.unsplash.com/photo-1517842645767-c639042777db?w=600&h=400&fit=crop" alt="AI Journal" loading="lazy" />
@@ -790,7 +802,7 @@
                     </div>
                     <div class="project-impact">
                         <span class="impact-label">⚡ Impact</span>
-                        <p>Enhances self-reflection through AI-powered writing assistance and sentiment analysis.</p>
+                        <p>Enhances self-reflection through AI-powered writing assistance.</p>
                     </div>
                     <div class="project-stack">
                         <span>JavaScript</span>
@@ -806,7 +818,6 @@
                 </div>
             </div>
 
-            <!-- React Components Collection -->
             <div class="project-card tilt-card-deep">
                 <div class="project-image">
                     <img src="https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?w=600&h=400&fit=crop" alt="React Components" loading="lazy" />
@@ -820,7 +831,7 @@
                     </div>
                     <div class="project-impact">
                         <span class="impact-label">⚡ Impact</span>
-                        <p>Accelerates development with reusable, type-safe components ensuring design consistency.</p>
+                        <p>Accelerates development with reusable, type-safe components.</p>
                     </div>
                     <div class="project-stack">
                         <span>React.js</span>
@@ -837,7 +848,6 @@
                 </div>
             </div>
 
-            <!-- React Interactions -->
             <div class="project-card tilt-card-deep">
                 <div class="project-image">
                     <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=600&h=400&fit=crop" alt="React Interactions" loading="lazy" />
@@ -866,7 +876,6 @@
                 </div>
             </div>
 
-            <!-- Automation Use Case Analyzer -->
             <div class="project-card tilt-card-deep">
                 <div class="project-image">
                     <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=400&fit=crop" alt="Automation Analyzer" loading="lazy" />
@@ -880,7 +889,7 @@
                     </div>
                     <div class="project-impact">
                         <span class="impact-label">⚡ Impact</span>
-                        <p>Analyzes processes to recommend automation opportunities, saving time and reducing costs.</p>
+                        <p>Analyzes processes to recommend automation opportunities.</p>
                     </div>
                     <div class="project-stack">
                         <span>TypeScript</span>
@@ -895,7 +904,6 @@
                 </div>
             </div>
 
-            <!-- Calendar View -->
             <div class="project-card tilt-card-deep">
                 <div class="project-image">
                     <img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=600&h=400&fit=crop" alt="Calendar View" loading="lazy" />
@@ -909,7 +917,7 @@
                     </div>
                     <div class="project-impact">
                         <span class="impact-label">⚡ Impact</span>
-                        <p>Simplifies event management with an intuitive, responsive interface for all devices.</p>
+                        <p>Simplifies event management with an intuitive, responsive interface.</p>
                     </div>
                     <div class="project-stack">
                         <span>JavaScript</span>
@@ -935,25 +943,13 @@
                         <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.15 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.62.24 2.85.12 3.15.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
                     </svg>
                 </div>
-
                 <div class="github-content">
                     <h3>Beyond These Projects 🚀</h3>
-                    <p class="description">
-                        These are some of my featured works, but my journey doesn't stop here. I regularly build new applications, explore emerging technologies, solve coding challenges, and experiment with innovative ideas. Visit my GitHub to discover more projects and see my continuous growth as a developer.
-                    </p>
+                    <p class="description">These are some of my featured works, but my journey doesn't stop here. I regularly build new applications, explore emerging technologies, solve coding challenges, and experiment with innovative ideas. Visit my GitHub to discover more projects and see my continuous growth as a developer.</p>
                     <div class="github-stats">
-                        <div class="github-stat">
-                            <span class="stat-number">100+</span>
-                            <span class="stat-label">Commits</span>
-                        </div>
-                        <div class="github-stat">
-                            <span class="stat-number">10+</span>
-                            <span class="stat-label">Repositories</span>
-                        </div>
-                        <div class="github-stat">
-                            <span class="stat-number">4</span>
-                            <span class="stat-label">Deployed Apps</span>
-                        </div>
+                        <div class="github-stat"><span class="stat-number">100+</span><span class="stat-label">Commits</span></div>
+                        <div class="github-stat"><span class="stat-number">10+</span><span class="stat-label">Repositories</span></div>
+                        <div class="github-stat"><span class="stat-number">4</span><span class="stat-label">Deployed Apps</span></div>
                     </div>
                     <div class="github-actions">
                         <a href="https://github.com/fabpot-glitch" target="_blank" rel="noopener noreferrer" class="btn-github-main">
@@ -965,9 +961,7 @@
                             Actively Building & Learning
                         </div>
                     </div>
-                    <p class="github-message">
-                        "Every project represents a step in my growth as a developer. I regularly explore new technologies, improve existing applications, and build solutions that strengthen my software development, frontend, and AI/ML skills."
-                    </p>
+                    <p class="github-message">"Every project represents a step in my growth as a developer. I regularly explore new technologies, improve existing applications, and build solutions that strengthen my software development, frontend, and AI/ML skills."</p>
                 </div>
             </div>
         </div>
@@ -995,19 +989,13 @@
                     <div class="achievement-icon">⚡</div>
                     <div class="achievement-number">Quickdraw</div>
                     <p>GitHub achievement for <strong>opening a pull request within 5 minutes</strong> of a repository being created</p>
-                    <div class="achievement-badge">
-                        <span class="badge-label">GitHub</span>
-                        <span class="badge-icon">🏅</span>
-                    </div>
+                    <div class="achievement-badge"><span class="badge-label">GitHub</span><span class="badge-icon">🏅</span></div>
                 </div>
                 <div class="achievement-card tilt-card">
                     <div class="achievement-icon">🚀</div>
                     <div class="achievement-number">YOLO</div>
                     <p>GitHub achievement for <strong>merging a pull request without review</strong> — embracing risk and speed</p>
-                    <div class="achievement-badge">
-                        <span class="badge-label">GitHub</span>
-                        <span class="badge-icon">🏅</span>
-                    </div>
+                    <div class="achievement-badge"><span class="badge-label">GitHub</span><span class="badge-icon">🏅</span></div>
                 </div>
             </div>
         </div>
@@ -1022,31 +1010,6 @@
                 <p class="certifications-subtitle">Professional certifications and course completions</p>
             </div>
             <div class="certifications-grid">
-                <!-- Pragati Path to Future -->
-                <div class="cert-card tilt-card">
-                    <div class="cert-icon">🏅</div>
-                    <div class="cert-content">
-                        <h3>Pragati Path to Future</h3>
-                        <p>Successfully completed the comprehensive development program</p>
-                        <span class="cert-issuer">Pragati Program</span>
-                        <a href="certificates/Pragati-Cohort.pdf" target="_blank" rel="noopener noreferrer" class="cert-btn">View Certificate →</a>
-                    </div>
-                    <div class="cert-hover-icon">📜</div>
-                </div>
-
-                <!-- Agentica Hackathon -->
-                <div class="cert-card tilt-card">
-                    <div class="cert-icon">🤖</div>
-                    <div class="cert-content">
-                        <h3>Agentica Hackathon</h3>
-                        <p>Participated in AI/ML focused hackathon with innovative solutions</p>
-                        <span class="cert-issuer">Agentica</span>
-                        <a href="certificates/Agentica-Hackathon.jpeg" target="_blank" rel="noopener noreferrer" class="cert-btn">View Certificate →</a>
-                    </div>
-                    <div class="cert-hover-icon">⚡</div>
-                </div>
-
-                <!-- iAccelerate Women Hackathon -->
                 <div class="cert-card tilt-card">
                     <div class="cert-icon">💪</div>
                     <div class="cert-content">
@@ -1058,7 +1021,6 @@
                     <div class="cert-hover-icon">🚀</div>
                 </div>
 
-                <!-- Infosys Springboard AI Primer -->
                 <div class="cert-card tilt-card">
                     <div class="cert-icon">🎓</div>
                     <div class="cert-content">
@@ -1070,7 +1032,6 @@
                     <div class="cert-hover-icon">📖</div>
                 </div>
 
-                <!-- Anthropic AI Fluency Framework -->
                 <div class="cert-card tilt-card">
                     <div class="cert-icon">🔬</div>
                     <div class="cert-content">
@@ -1082,31 +1043,18 @@
                     <div class="cert-hover-icon">🧠</div>
                 </div>
 
-                <!-- Anthropic AI Fluency Nonprofits -->
+                <!-- NEW: Anthropic Introduction to Model Context Protocol -->
                 <div class="cert-card tilt-card">
-                    <div class="cert-icon">🤝</div>
+                    <div class="cert-icon">🧩</div>
                     <div class="cert-content">
-                        <h3>Anthropic · AI Fluency for Nonprofits &amp; Educators</h3>
-                        <p>Specialized certification for applying AI in nonprofit and educational settings</p>
+                        <h3>Anthropic · Introduction to Model Context Protocol</h3>
+                        <p>Foundational certification for understanding and implementing Model Context Protocol</p>
                         <span class="cert-issuer">Anthropic</span>
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="cert-btn">View Certificate →</a>
+                        <a href="https://verify.skilljar.com/c/ryuagwkgc72e" target="_blank" rel="noopener noreferrer" class="cert-btn">View Certificate →</a>
                     </div>
-                    <div class="cert-hover-icon">📚</div>
+                    <div class="cert-hover-icon">🔗</div>
                 </div>
 
-                <!-- Anthropic Agent Skills -->
-                <div class="cert-card tilt-card">
-                    <div class="cert-icon">⚙️</div>
-                    <div class="cert-content">
-                        <h3>Anthropic · Introduction to Agent Skills</h3>
-                        <p>Foundational certification for building AI agents with Claude API</p>
-                        <span class="cert-issuer">Anthropic</span>
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="cert-btn">View Certificate →</a>
-                    </div>
-                    <div class="cert-hover-icon">🤖</div>
-                </div>
-
-                <!-- Anthropic Building with Claude API -->
                 <div class="cert-card tilt-card">
                     <div class="cert-icon">🛠️</div>
                     <div class="cert-content">
@@ -1118,19 +1066,17 @@
                     <div class="cert-hover-icon">🔧</div>
                 </div>
 
-                <!-- Anthropic Claude with Google Vertex AI -->
                 <div class="cert-card tilt-card">
                     <div class="cert-icon">☁️</div>
                     <div class="cert-content">
                         <h3>Anthropic · Claude with Google Vertex AI</h3>
                         <p>Certification for integrating Claude with Google Vertex AI platform</p>
                         <span class="cert-issuer">Anthropic</span>
-                        <a href="https://verify.skilljar.com/c/b93w78qjyrvw" target="_blank" rel="noopener noreferrer" class="cert-btn">View Certificate →</a>
+                        <a href="https://verify.skilljar.com/c/b93w78qiyrvw" target="_blank" rel="noopener noreferrer" class="cert-btn">View Certificate →</a>
                     </div>
                     <div class="cert-hover-icon">☁️</div>
                 </div>
 
-                <!-- EY Forage Technology Risk -->
                 <div class="cert-card tilt-card">
                     <div class="cert-icon">📊</div>
                     <div class="cert-content">
@@ -1142,7 +1088,6 @@
                     <div class="cert-hover-icon">📈</div>
                 </div>
 
-                <!-- Internshala Full Stack Development -->
                 <div class="cert-card tilt-card">
                     <div class="cert-icon">💼</div>
                     <div class="cert-content">
@@ -1175,9 +1120,7 @@
                             <span class="edu-year">2023 - 2027</span>
                             <span class="edu-location">Tirupati, Andhra Pradesh</span>
                         </div>
-                        <div class="edu-highlights">
-                            <span>📚 Core: ML, DSA, DBMS, OS</span>
-                        </div>
+                        <div class="edu-highlights"><span>📚 Core: ML, DSA, DBMS, OS</span></div>
                     </div>
                 </div>
 
@@ -1191,9 +1134,7 @@
                             <span class="edu-year">2021 - 2023</span>
                             <span class="edu-location">Tirupati, Andhra Pradesh</span>
                         </div>
-                        <div class="edu-highlights">
-                            <span>📊 Mathematics, Physics, Chemistry</span>
-                        </div>
+                        <div class="edu-highlights"><span>📊 Mathematics, Physics, Chemistry</span></div>
                     </div>
                 </div>
 
@@ -1207,9 +1148,7 @@
                             <span class="edu-year">2020</span>
                             <span class="edu-location">Dharmavaram, Satyasai District</span>
                         </div>
-                        <div class="edu-highlights">
-                            <span>🏆 Perfect Score</span>
-                        </div>
+                        <div class="edu-highlights"><span>🏆 Perfect Score</span></div>
                     </div>
                 </div>
             </div>
@@ -1227,82 +1166,45 @@
         <div class="container">
             <div class="contact-wrapper">
                 <div class="contact-header">
-                    <span class="badge-connect">
-                        <span class="dot"></span>
-                        Get In Touch
-                    </span>
-                    <h2 class="contact-title">
-                        Let's <span class="accent">Connect</span>
-                    </h2>
+                    <span class="badge-connect"><span class="dot"></span>Get In Touch</span>
+                    <h2 class="contact-title">Let's <span class="accent">Connect</span></h2>
                     <p class="contact-subtitle">Have a question or want to work together? Reach out and let's make something amazing.</p>
                 </div>
 
                 <div class="contact-grid">
                     <div class="contact-left">
-                        <p class="contact-intro">
-                            I'm always excited to discuss new opportunities, collaborate on interesting projects, or simply chat about the latest in tech. Whether you're a recruiter, fellow developer, or someone with a cool idea, I'd love to hear from you!
-                        </p>
-
-                        <div class="availability-badge">
-                            <span class="pulse-dot"></span>
-                            Open to Internships & Full-Time Opportunities
-                        </div>
-
+                        <p class="contact-intro">I'm always excited to discuss new opportunities, collaborate on interesting projects, or simply chat about the latest in tech. Whether you're a recruiter, fellow developer, or someone with a cool idea, I'd love to hear from you!</p>
+                        <div class="availability-badge"><span class="pulse-dot"></span>Open to Internships & Full-Time Opportunities</div>
                         <div class="contact-cards">
                             <a href="mailto:sakenikhitha102@gmail.com" class="contact-card" data-copy="sakenikhitha102@gmail.com">
                                 <span class="icon">📧</span>
-                                <div class="info">
-                                    <span class="label">Email</span>
-                                    <span class="value">sakenikhitha102@gmail.com</span>
-                                </div>
+                                <div class="info"><span class="label">Email</span><span class="value">sakenikhitha102@gmail.com</span></div>
                                 <span class="copy-feedback">✓ Copied</span>
                             </a>
-
                             <a href="tel:+919063982693" class="contact-card">
                                 <span class="icon">📱</span>
-                                <div class="info">
-                                    <span class="label">Phone</span>
-                                    <span class="value">+91 90639 82693</span>
-                                </div>
+                                <div class="info"><span class="label">Phone</span><span class="value">+91 90639 82693</span></div>
                             </a>
-
                             <a href="https://www.linkedin.com/in/nikhitha-sake-530449307" target="_blank" rel="noopener noreferrer" class="contact-card">
                                 <span class="icon">💼</span>
-                                <div class="info">
-                                    <span class="label">LinkedIn</span>
-                                    <span class="value">Nikhitha Sake</span>
-                                </div>
+                                <div class="info"><span class="label">LinkedIn</span><span class="value">Nikhitha Sake</span></div>
                             </a>
-
                             <a href="https://github.com/fabpot-glitch" target="_blank" rel="noopener noreferrer" class="contact-card">
                                 <span class="icon">🖥</span>
-                                <div class="info">
-                                    <span class="label">GitHub</span>
-                                    <span class="value">fabpot-glitch</span>
-                                </div>
+                                <div class="info"><span class="label">GitHub</span><span class="value">fabpot-glitch</span></div>
                             </a>
                         </div>
-
                         <div class="social-links">
                             <a href="https://github.com/fabpot-glitch" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="GitHub">
-                                <svg viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.15 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.62.24 2.85.12 3.15.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-                                </svg>
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.15 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.62.24 2.85.12 3.15.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
                                 <span class="tooltip">GitHub</span>
                             </a>
-
                             <a href="https://www.linkedin.com/in/nikhitha-sake-530449307" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="LinkedIn">
-                                <svg viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                                </svg>
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
                                 <span class="tooltip">LinkedIn</span>
                             </a>
-
                             <a href="mailto:sakenikhitha102@gmail.com" class="social-btn" aria-label="Email">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                                    <polyline points="22,6 12,13 2,6"/>
-                                </svg>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                                 <span class="tooltip">Email</span>
                             </a>
                         </div>
@@ -1311,38 +1213,32 @@
                     <div class="contact-right">
                         <div class="form-card">
                             <h3>Send a Message</h3>
-
                             <div id="contactForm">
                                 <div class="form-group">
                                     <label for="contactName">Full Name <span class="required">*</span></label>
                                     <input type="text" id="contactName" placeholder="Your full name" required />
                                     <span class="error-message">Please enter your name</span>
                                 </div>
-
                                 <div class="form-group">
                                     <label for="contactEmail">Email Address <span class="required">*</span></label>
                                     <input type="email" id="contactEmail" placeholder="your.email@example.com" required />
                                     <span class="error-message">Please enter a valid email</span>
                                 </div>
-
                                 <div class="form-group">
                                     <label for="contactSubject">Subject <span class="required">*</span></label>
                                     <input type="text" id="contactSubject" placeholder="What's this about?" required />
                                     <span class="error-message">Please enter a subject</span>
                                 </div>
-
                                 <div class="form-group">
                                     <label for="contactMessage">Message <span class="required">*</span></label>
                                     <textarea id="contactMessage" rows="4" placeholder="Tell me about your project or opportunity..." required></textarea>
                                     <span class="error-message">Please enter your message</span>
                                 </div>
-
                                 <button type="button" class="submit-btn" id="submitBtn">
                                     <span>Send Message →</span>
                                     <span class="spinner"></span>
                                 </button>
                             </div>
-
                             <div class="form-success" id="formSuccess">
                                 <div class="checkmark">✓</div>
                                 <p>Message Sent Successfully!</p>
@@ -1380,9 +1276,7 @@
                     <p><a href="mailto:sakenikhitha102@gmail.com">sakenikhitha102@gmail.com</a></p>
                     <p><a href="tel:+919063982693">+91 90639 82693</a></p>
                     <p><a href="https://www.linkedin.com/in/nikhitha-sake-530449307" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
-                    <div class="footer-clock">
-                        <span id="footerClock">IST · 00:00:00</span>
-                    </div>
+                    <div class="footer-clock"><span id="footerClock">IST · 00:00:00</span></div>
                 </div>
 
                 <div class="footer-links">
@@ -1398,14 +1292,8 @@
             </div>
 
             <div class="footer-bottom">
-                <div class="footer-copy">
-                    &copy; 2026 Sake Nikhitha · Built with precision &amp; purpose
-                </div>
-                <div class="footer-tech">
-                    <span>HTML</span>
-                    <span>CSS</span>
-                    <span>JavaScript</span>
-                </div>
+                <div class="footer-copy">&copy; 2026 Sake Nikhitha · Built with precision &amp; purpose</div>
+                <div class="footer-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
             </div>
         </div>
     </footer>
@@ -1423,9 +1311,6 @@
             }, { passive: true });
         })();
 
-        // ============================================================
-        // INTRO VIDEO - Interactive Controls
-        // ============================================================
         (function() {
             var video = document.getElementById('introVideo');
             var overlay = document.getElementById('videoOverlay');
@@ -1435,11 +1320,8 @@
 
             if (!video || !overlay) return;
 
-            // Play/pause on click
             section.addEventListener('click', function(e) {
-                // Don't trigger if clicking on controls
                 if (e.target.closest('.video-controls')) return;
-
                 if (video.paused) {
                     video.play();
                     overlay.classList.add('hidden');
@@ -1449,7 +1331,6 @@
                 }
             });
 
-            // Mute toggle
             if (muteBtn) {
                 muteBtn.addEventListener('click', function(e) {
                     e.stopPropagation();
@@ -1458,7 +1339,6 @@
                 });
             }
 
-            // Restart video
             if (restartBtn) {
                 restartBtn.addEventListener('click', function(e) {
                     e.stopPropagation();
@@ -1468,25 +1348,20 @@
                 });
             }
 
-            // Show overlay when video ends
             video.addEventListener('ended', function() {
                 overlay.classList.remove('hidden');
             });
 
-            // Hide overlay when video starts playing
             video.addEventListener('play', function() {
                 overlay.classList.add('hidden');
             });
 
-            // Show overlay when video pauses
             video.addEventListener('pause', function() {
                 overlay.classList.remove('hidden');
             });
 
-            // Auto-play video when page loads with slight delay
             window.addEventListener('load', function() {
                 setTimeout(function() {
-                    // Try to play, but if autoplay is blocked, show overlay
                     var playPromise = video.play();
                     if (playPromise !== undefined) {
                         playPromise.then(function() {
@@ -1495,7 +1370,6 @@
                             overlay.classList.remove('hidden');
                             video.muted = true;
                             if (muteBtn) muteBtn.textContent = '🔇';
-                            // Try again with muted
                             video.play().then(function() {
                                 overlay.classList.add('hidden');
                             }).catch(function() {});
@@ -1503,7 +1377,6 @@
                     }
                 }, 800);
             });
-
         })();
     </script>
 </body>
